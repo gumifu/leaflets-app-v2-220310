@@ -38,7 +38,8 @@ const Posts = () => {
                   profileImg={ post.data().profileImg}
                   img={ post.data().image}
                   caption={ post.data().caption}
-                  // placeInfo={ post.data().placeInfo}
+                  prefectures={post.data().prefectures}
+                  placeInfo={ post.data().place}
                   // shopTel={ post.shopTel}
                   // shopEmail={ post.shopEmail}
                   />

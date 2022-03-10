@@ -13,7 +13,7 @@ import { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import { db } from '../firebase';
 
-const Post = ({id, accountName, profileImg, img, caption }) => {
+const Post = ({id, accountName, profileImg, img, caption,prefectures,placeInfo }) => {
     const { data: session } = useSession();
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
@@ -46,7 +46,7 @@ const Post = ({id, accountName, profileImg, img, caption }) => {
         }
     };
 
-    console.log(hasLiked);
+    // console.log(hasLiked);
 
     // snapshot comment!
     useEffect(() => onSnapshot(query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')), snapshot => setComments(snapshot.docs)), [db,id]);
@@ -66,21 +66,24 @@ const Post = ({id, accountName, profileImg, img, caption }) => {
         });
     }
   return (
-    <div className='bg-white my-7 border rounded-sm'>
+    <div className='bg-white my-7 border border-black rounded-3xl relative'>
         {/* img */}
-        <img src={img} alt="" className="object-cover w-full" />
+        <div className="bg-gray-100 p-10 rounded-3xl">
+            <div className=" bg-white shadow-2xl shadow-gray-900">
+                <img src={img} alt="" className="object-cover w-full" />
+            </div>
+        </div>
         {/* Button */}
         {session && (
             <div className=" flex  justify-between px-4 pt-4">
                 <div className="flex space-x-4 items-center">
-                {
-                    hasLiked ? (
-                    <HeartIconFilled onClick={likePost} className='btn text-red-500'/>
-                    ):(
-                    <HeartIcon onClick={likePost} className='btn'/>
-                    )
-                }
-
+                    {
+                        hasLiked ? (
+                        <HeartIconFilled onClick={likePost} className='btn text-red-500'/>
+                        ):(
+                        <HeartIcon onClick={likePost} className='btn'/>
+                        )
+                    }
                     <ChatIcon className='btn'/>
                     <PaperAirplaneIcon className='btn rotate-45'/>
                 </div>
@@ -96,12 +99,15 @@ const Post = ({id, accountName, profileImg, img, caption }) => {
           <div className="flex items-center p-5 truncate ">
             <img src={profileImg} alt="" className=" rounded-full h-12 w-12 object-contain border p-1 mr-3" />
               <p className="flex-1 font-bold">{accountName}</p>
-
-              <DotsHorizontalIcon className='h-5'/>
+      {/* prefectures/place */}
+        <p className="px-5 py-3 mr-5 rounded-full truncate bg-red-400 text-white">
+              {prefectures}{placeInfo}
+          </p>
+              <DotsHorizontalIcon className='h-5' />
         </div>
-        {/* caption */}
-          <p className="px-10 pb-5 truncate">
 
+        {/* caption */}
+          <p className="px-10 pb-5 truncate font-bold">
               <span>{caption}</span>
           </p>
 

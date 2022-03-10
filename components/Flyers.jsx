@@ -12,7 +12,7 @@ const Flyers = () => {
         {/* section */}
       <section className='col-span-2'>
         {/* Stories */}
-        <Stories/>
+        {/* <Stories/> */}
         {/* Pots */}
         <Posts/>
       </section>
