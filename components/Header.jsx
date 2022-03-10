@@ -62,7 +62,7 @@ const Header = () => {
               />
             </>
           ): (
-            <button className='text-white' onClick={signIn}>サインイン</button>
+            <button className='text-blue-400 text-lg' onClick={signIn}>サインイン</button>
         )}
       </div>
     </div>
