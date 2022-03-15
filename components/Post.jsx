@@ -13,7 +13,8 @@ import { useState, useEffect } from 'react';
 import Moment from 'react-moment';
 import { db } from '../firebase';
 
-const Post = ({id, accountName, profileImg, img, caption,prefectures,placeInfo }) => {
+
+const Post = ({id, accountName, profileImg, img, caption,prefectures,placeInfo,shopName,shopEmail,shopTel,shopHomepage}) => {
     const { data: session } = useSession();
     const [comment, setComment] = useState("");
     const [comments, setComments] = useState([]);
@@ -66,7 +67,7 @@ const Post = ({id, accountName, profileImg, img, caption,prefectures,placeInfo }
         });
     }
   return (
-    <div className='bg-white my-7 border border-black rounded-3xl relative'>
+    <div className='bg-white my-7 border border-black rounded-3xl relative '>
         {/* img */}
         <div className="bg-gray-100 p-10 rounded-3xl">
             <div className=" bg-white shadow-2xl shadow-gray-900">

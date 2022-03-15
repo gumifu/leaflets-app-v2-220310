@@ -16,6 +16,7 @@ import Post from './Post'
 //     },
 // ]
 
+
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
@@ -28,7 +29,7 @@ const Posts = () => {
   // console.log(posts);
 
   return (
-    <div>
+    <div className='grid grid-cols-2 m-14 gap-5 md:grid-cols-4'>
         {/* Post */}
           {posts.map((post) => (
               <Post
@@ -40,8 +41,10 @@ const Posts = () => {
                   caption={ post.data().caption}
                   prefectures={post.data().prefectures}
                   placeInfo={ post.data().place}
-                  // shopTel={ post.shopTel}
-                  // shopEmail={ post.shopEmail}
+                  // shopName={ post.data().shopName}
+                  // shopEmail={ post.data().shopEmail}
+                  // shopTel={ post.data().shopTel}
+                  // shopHomepage={ post.data().shopHomepage}
                   />
         ))}
     </div>

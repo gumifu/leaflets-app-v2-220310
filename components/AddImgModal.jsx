@@ -15,6 +15,11 @@ export const AddImgModal = () => {
     const captionRef = useRef(null);
     const prefecRef = useRef(null);
     const placeRef = useRef(null);
+    const shopNameRef = useRef(null);
+    const classificationRef = useRef(null);
+    const emailRef = useRef(null);
+    const telRef = useRef(null);
+    const homepageRef = useRef(null);
     const [loading, setLoading] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
 
@@ -37,13 +42,15 @@ export const AddImgModal = () => {
             caption: captionRef.current.value,
             prefectures: prefecRef.current.value,
             place: placeRef.current.value,
+            shopName: shopNameRef.current.value,
+            classification: classificationRef.current.value,
+            shopEmail: emailRef.current.value,
+            shopTel: telRef.current.value,
+            shopHomepage: homepageRef.current.value,
             profileImg: session.user.image,
             timestamp: serverTimestamp()
         })
-
         console.log("New doc added with ID", docRef.id);
-
-
         // img to Storage! & Store
         const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
@@ -110,7 +117,7 @@ export const AddImgModal = () => {
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                   >
                 {/* Modalの中身 */}
-                    <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 ">
+              <div className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-10 sm:align-middle sm:max-w-sm sm:w-full sm:p-6 ">
                 <div>
                   {selectedFile ? (
                     <img
@@ -122,44 +129,77 @@ export const AddImgModal = () => {
                   ) : (
                     <div
                       onClick={() => filePickerRef.current.click()}
-                      className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 cursor-pointer"
+                      className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
                     >
                       <CameraIcon
-                        className="h-6 w-6 text-red-600"
+                        className="h-6 w-6 text-blue-600"
                         aria-hidden="true"
                       />
                     </div>
                   )}
-                  <div>
-                    <div className="mt-3 text-center sm:mt-5">
+                  <div className="mt-10">
+                    <div className="mt-10 text-center sm:mt-5 ">
                       <Dialog.Title
                         as="h3"
-                        className="text-lg leading-6 font-medium text-gray-900"
+                        className=" text-lg leading-6 font-medium text-gray-900"
                       >
-                        写真追加
                       </Dialog.Title>
                       <div>
                         <input
                           ref={filePickerRef}
                           type="file"
                           hidden
-                          onChange={addImageToPost}
+                        onChange={addImageToPost}
+                        required
                         />
-                      </div>
-                      <div className="mt-2">
+                    </div>
+                    {/* 店名を追加 */}
+                      <div className="mt-2 border-b-2">
+                        <input
+                          className="border-none focus:right-0 w-full text-center"
+                          ref={shopNameRef}
+                          type="text"
+                          placeholder="店名を追加"
+                          required
+                        />
+                    </div>
+                    <select ref={classificationRef} name="classification" className="border-none mr-1">
+                            <option value="カフェ">カフェ</option>
+                            <option value="スクール">スクール</option>
+                            <option value="美容室">美容室</option>
+                            <option value="飲食店">飲食店</option>
+                            <option value="観光地">観光地</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    {/* キャプションを追加 */}
+                      <div className="mt-2 border-b-2">
                         <input
                           className="border-none focus:right-0 w-full text-center"
                           ref={captionRef}
                           type="text"
                           placeholder="キャプションを追加"
+                          required
                         />
-                      </div>
-                      <div className="mt-2 flex">
+                    </div>
+                    {/* <span class="p-country-name" style="display:none;">Japan</span> */}
+                    {/* <div className="flex items-center justify-center mt-5  border-b-2">
+                    <p>〒</p>
+                      <input
+                          className="border-none focus:right-0 w-18 text-center"
+                          ref={placeRef}
+                          type="text"
+                      placeholder="郵便番号"
+                      maxlength="8"
+                        />
+                    </div> */}
+                    {/* 場所の追加 */}
+                      <div className="mt-5 flex items-center border-b-2">
                       <select ref={prefecRef} name="prefectures" className="border-none mr-1">
                             <option value="福岡県">福岡県</option>
                             <option value="東京都">東京都</option>
                             <option value="北海道">北海道</option>
                             <option value="山口県">山口県</option>
+                            <option value="その他">その他</option>
                         </select>
                         <input
                           className="border-none focus:right-0 w-full text-center"
@@ -167,8 +207,28 @@ export const AddImgModal = () => {
                           type="text"
                           placeholder="場所を追加"
                         />
-                      </div>
-
+                    </div>
+                    {/* アドレスの追加 */}
+                        <input
+                          className="mt-5 border-none focus:right-0 w-full text-center"
+                          ref={emailRef}
+                          type="email"
+                          placeholder="Emailアドレス"
+                    />
+                    {/* 電話番号の追加 */}
+                        <input
+                          className="mt-5 border-none focus:right-0 w-full text-center"
+                          ref={telRef}
+                          type="tel"
+                          placeholder="電話番号"
+                    />
+                    {/* ホームページアドレスの追加 */}
+                        <input
+                          className="mt-5 border-none focus:right-0 w-full text-center"
+                          ref={homepageRef}
+                          type="url"
+                          placeholder="ホームページ"
+                        />
                     </div>
                   </div>
 
