@@ -101,7 +101,7 @@ const Post = ({id, accountName, profileImg, img, caption,prefectures,placeInfo,s
             <img src={profileImg} alt="" className=" rounded-full h-12 w-12 object-contain border p-1 mr-3" />
               <p className="flex-1 font-bold">{accountName}</p>
       {/* prefectures/place */}
-        <p className="px-5 py-3 mr-5 rounded-full truncate bg-red-400 text-white">
+        <p className="px-5 py-3 mr-5 rounded-full truncate bg-red-400 text-white w-40 text-center">
               {prefectures}{placeInfo}
           </p>
               <DotsHorizontalIcon className='h-5' />

@@ -1,6 +1,16 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
-import EmailProvider from "next-auth/providers/email"
+// import EmailProvider from "next-auth/providers/email"
+// import { app } from "../../../firebase"
+// import { FirebaseAdapter } from "@next-auth/firebase-adapter"
+
+// import firebase from "firebase/app"
+// import "firebase/firestore"
+
+// const firestore = (
+//   firebase.apps[0] ?? firebase.initializeApp(app)
+// ).firestore()
+
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -22,6 +32,7 @@ export default NextAuth({
   // }),
     // ...add more providers here
   ],
+  // adapter: FirebaseAdapter(firestore),
   secret: process.env.NEXTAUTH_SECRET,
     // theme: {
   //   logo: '/logo-main-white.svg',
