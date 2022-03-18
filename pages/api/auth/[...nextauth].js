@@ -1,5 +1,7 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
+// import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from 'next-auth/providers/credentials'
 // import EmailProvider from "next-auth/providers/email"
 // import { app } from "../../../firebase"
 // import { FirebaseAdapter } from "@next-auth/firebase-adapter"
@@ -12,43 +14,58 @@ import GoogleProvider from "next-auth/providers/google"
 // ).firestore()
 
 
-export default NextAuth({
+
+const options = {
   // Configure one or more authentication providers
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-  //   EmailProvider({
-  //   server: {
-  //     host: process.env.EMAIL_SERVER_HOST,
-  //     port: process.env.EMAIL_SERVER_PORT,
-  //     auth: {
-  //       user: process.env.EMAIL_SERVER_USER,
-  //       pass: process.env.EMAIL_SERVER_PASSWORD
-  //     }
-  //   },
-  //   from: process.env.EMAIL_FROM
-  // }),
+    CredentialsProvider({
+      // 表示名 ('Sign in with ...' に表示される)
+      name: "Email",
+      // credentials は、ログインページで適切なフォームを生成するために使用されます。
+      // 送信するフィールドを指定できます。（今回は メールアドレス と パスワード）
+      credentials: {
+        email: { label: "Email", type: "email", placeholder: "email@example.com" },
+        password: { label: "Password", type: "password" },
+      },
+      // 認証の関数
+      authorize: async credentials => {
+        const user = findUserByCredentials(credentials)
+        if (user) {
+          // 返されたオブジェクトはすべてJWTの`user`プロパティに保存される
+          return Promise.resolve(user)
+        } else {
+          // nullまたはfalseを返すと、認証を拒否する
+          return Promise.resolve(null)
+
+          // ErrorオブジェクトやリダイレクトURLを指定してコールバックをリジェクトすることもできます。
+          // return Promise.reject(new Error('error message')) // エラーページにリダイレクト
+          // return Promise.reject('/path/to/redirect')        // URL にリダイレクト
+        }
+      },
+    }),
     // ...add more providers here
   ],
   // adapter: FirebaseAdapter(firestore),
   secret: process.env.NEXTAUTH_SECRET,
-    // theme: {
-  //   logo: '/logo-main-white.svg',
-  //   brandColor: '#F13287',
-  //   colorScheme:'auto',
-  // },
-    pages: {
-        signIn:"/auth/signin",
+
+  pages: {
+    signIn: "/auth/signin",
   },
-   callbacks: {
-     async session({ session, token, user }) {
+  callbacks: {
+    async session({ session, token, user }) {
       //  usernameの生成
-        session.user.username = session.user.name.split(" ").join("").toLocaleLowerCase();
-        //uidの生成
-        session.user.uid = token.sub;
-        return session;
-      },
+      session.user.username = session.user.name.split(" ").join("").toLocaleLowerCase();
+      //uidの生成
+      session.user.uid = token.sub;
+      return session;
+    },
   },
-})
+};
+
+export default (req, res) => NextAuth(req, res, options)
+
+
