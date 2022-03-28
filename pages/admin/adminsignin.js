@@ -3,19 +3,21 @@ import Header from "../../components/Header";
 
 export default function signIn({ providers }) {
   return (
-    <div className="bg-gradient-to-br from-blue-900 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
-      <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen -mt-32 py-2  px-14">
+    <div className="bg-gradient-to-br from-gray-700 to-black h-screen overflow-y-scroll scrollbar-hide">
+      {/* <Header /> */}
+      <div className="flex flex-col items-center justify-center min-h-screen py-2  px-14">
         <img src="/logo-main-white.svg" className="w-60" />
 
-        <p className="font-lg italic mt-5 text-gray-100">leafletsへようこそ!</p>
+        <p className="text-3xl italic mt-10 text-gray-100">Upload files page</p>
         <div className="mt-40">
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <button
                 className="p-3 bg-blue-500 rounded-lg text-white"
                 onClick={() =>
-                  SignIntoProvider(provider.id, { callbackUrl: "/" })
+                  SignIntoProvider(provider.id, {
+                    callbackUrl: "/admin/adminindex",
+                  })
                 }
               >
                 Sign in with {provider.name}
