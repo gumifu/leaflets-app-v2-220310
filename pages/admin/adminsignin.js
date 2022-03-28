@@ -20,6 +20,7 @@ export default function signIn({ providers }) {
                   })
                 }
               >
+                {/* <button onClick={() => SignIntoProvider(provider.id)}> */}
                 Sign in with {provider.name}
               </button>
             </div>

@@ -18,6 +18,7 @@ export default function signIn({ providers }) {
                   SignIntoProvider(provider.id, { callbackUrl: "/" })
                 }
               >
+                {/* <button onClick={() => SignIntoProvider(provider.id)}> */}
                 Sign in with {provider.name}
               </button>
             </div>
