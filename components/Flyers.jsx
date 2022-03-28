@@ -1,6 +1,5 @@
 import { useSession } from "next-auth/react";
 import React from "react";
-import DetailInfo from "./DetailInfo";
 import MiniProfile from "./MiniProfile";
 import Posts from "./Posts";
 import Stories from "./Stories";
@@ -29,9 +28,6 @@ const Flyers = () => {
             <MiniProfile />
             {/* Suggestion */}
             <Suggestions />
-
-            {/* <DetailInfo/> */}
-            <DetailInfo />
 
           </div>
         </section>
