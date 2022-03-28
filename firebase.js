@@ -10,7 +10,7 @@ import { getStorage } from "firebase/storage";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyA5Kksd9VrkR-raCn9RGPUrDLdTyzjpqss",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "leaflets-app-v2-220310.firebaseapp.com",
   projectId: "leaflets-app-v2-220310",
   storageBucket: "leaflets-app-v2-220310.appspot.com",

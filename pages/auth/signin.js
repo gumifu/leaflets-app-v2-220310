@@ -1,5 +1,5 @@
-import { getProviders, signIn as SignIntoProvider } from 'next-auth/react'
-import Header from '../../components/Header'
+import { getProviders, signIn as SignIntoProvider } from "next-auth/react";
+import Header from "../../components/Header";
 
 export default function signIn({ providers }) {
   return (
@@ -15,7 +15,7 @@ export default function signIn({ providers }) {
               <button
                 className="p-3 bg-blue-500 rounded-lg text-white"
                 onClick={() =>
-                  SignIntoProvider(provider.id, { callbackUrl: '/' })
+                  SignIntoProvider(provider.id, { callbackUrl: "/" })
                 }
               >
                 Sign in with {provider.name}
@@ -25,13 +25,13 @@ export default function signIn({ providers }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // This is the recommended way for Next.js 9.3 or newer
 export async function getServerSideProps(context) {
-  const providers = await getProviders()
+  const providers = await getProviders();
   return {
-    props: { providers, },
-  }
+    props: { providers },
+  };
 }

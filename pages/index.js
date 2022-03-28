@@ -1,22 +1,23 @@
-import Head from 'next/head'
-import { AddImgModal } from '../components/AddImgModal'
-import Flyers from '../components/Flyers'
-import Header from '../components/Header'
+import Head from "next/head";
+import { AddImgModal } from "../components/AddImgModal";
+import Flyers from "../components/Flyers";
+import Header from "../components/Header";
 
 export default function Home() {
   return (
-    <div className='bg-gradient-to-br from-blue-900 to-gray-900 h-screen overflow-y-scroll scrollbar-hide'>
+    <div className="bg-gradient-to-br from-blue-500 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
       <Head>
         <title>leaflets</title>
         <meta name="description" content="Leaflets app by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* header */}
-      <Header/>
+      <Header />
       {/* feed */}
-      <Flyers/>
+      <Flyers />
+
       {/* modal */}
-      <AddImgModal/>
+      <AddImgModal />
 
       {/* <main className={styles.main}>
 
@@ -69,5 +70,5 @@ export default function Home() {
         </a>
       </footer> */}
     </div>
-  )
+  );
 }

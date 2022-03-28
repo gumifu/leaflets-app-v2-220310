@@ -1,7 +1,17 @@
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { useState, useEffect } from 'react'
-import { db } from '../firebase';
-import Post from './Post'
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import { db } from "../firebase";
+import Post from "./Post";
+import Masonry from 'react-masonry-css';
+
+const breakpointColumnsObj = {
+    default: 4,
+    3000: 6,
+    2000: 5,
+    1200: 3,
+    1000: 2,
+    500: 1,
+};
 
 // const posts = [
 //     {
@@ -16,39 +26,49 @@ import Post from './Post'
 //     },
 // ]
 
-
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
-  useEffect(() =>
-    onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), snapshot => {
-      setPosts(snapshot.docs);
-    }
-    ), [db]);
+  useEffect(
+    () =>
+      onSnapshot(
+        query(collection(db, "posts"), orderBy("timestamp", "desc")),
+        (snapshot) => {
+          setPosts(snapshot.docs);
+        }
+      ),
+    [db]
+  );
+  // console.log(db);
 
-  // console.log(posts);
+  console.log(posts);
 
   return (
-    <div className='grid grid-cols-2 m-14 gap-5 md:grid-cols-4'>
-        {/* Post */}
-          {posts.map((post) => (
-              <Post
-                  key={post.id}
-                  id={post.id}
-                  accountName={ post.data().accountName}
-                  profileImg={ post.data().profileImg}
-                  img={ post.data().image}
-                  caption={ post.data().caption}
-                  prefectures={post.data().prefectures}
-                  placeInfo={ post.data().place}
-                  // shopName={ post.data().shopName}
-                  // shopEmail={ post.data().shopEmail}
-                  // shopTel={ post.data().shopTel}
-                  // shopHomepage={ post.data().shopHomepage}
-                  />
-        ))}
-    </div>
-  )
-}
+    // <div className="grid grid-cols-2 m-14 gap-5 md:grid-cols-4">
+  <Masonry className="flex animate-slide-fwd" breakpointCols={breakpointColumnsObj}>
 
-export default Posts
+      {/* Post */}
+      {posts.map((post) => (
+
+        <Post
+          key={post.id}
+          id={post.id}
+          accountName={post.data().accountName}
+          profileImg={post.data().profileImg}
+          img={post.data().image}
+          caption={post.data().caption}
+          prefectures={post.data().prefectures}
+          placeInfo={post.data().place}
+          // shopName={ post.data().shopName}
+          // shopEmail={ post.data().shopEmail}
+          // shopTel={ post.data().shopTel}
+          // shopHomepage={ post.data().shopHomepage}
+        />
+      ))}
+      </Masonry>
+
+
+  );
+};
+
+export default Posts;
