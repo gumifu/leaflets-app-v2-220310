@@ -15,7 +15,7 @@ import { ref, getDownloadURL, uploadString } from "@firebase/storage";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export default function adminIndex() {
+export default function AdminIndex() {
   const { data: session } = useSession();
   const filePickerRef = useRef(null);
   const captionRef = useRef(null);
