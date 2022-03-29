@@ -28,7 +28,6 @@ const Flyers = () => {
             <MiniProfile />
             {/* Suggestion */}
             <Suggestions />
-
           </div>
         </section>
       )}

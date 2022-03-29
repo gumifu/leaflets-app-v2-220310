@@ -32,7 +32,6 @@ export default function AdminIndex() {
   const [selectedFile, setSelectedFile] = useState(null);
   const router = useRouter();
 
-
   // firebase post!!!
   const uploadPost = async () => {
     if (loading) return;
@@ -57,12 +56,10 @@ export default function AdminIndex() {
       shopHomepage: homepageRef.current.value,
       // profileImg: session.user.image,
       coordinates: {
-        latitude:Number(latRef.current.value),
-        longitude:Number(lngRef.current.value),
-      }
-        ,
+        latitude: Number(latRef.current.value),
+        longitude: Number(lngRef.current.value),
+      },
       timestamp: serverTimestamp(),
-
     });
     // await addDoc(collection(db, "posts"), {
     //   coordinates: lesserGeopoint(latRef.current.value, lngRef.current.value)
@@ -81,7 +78,6 @@ export default function AdminIndex() {
       }
     );
   };
-
 
   const addImageToPost = (e) => {
     const reader = new FileReader();

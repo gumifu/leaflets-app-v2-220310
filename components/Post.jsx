@@ -17,12 +17,16 @@ import {
   query,
   serverTimestamp,
   setDoc,
+  getDoc,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { Fragment, useState, useEffect } from "react";
 import Moment from "react-moment";
 import { db } from "../firebase";
-import Nextlink from 'next/link'
+import Nextlink from "next/link";
+import { Dialog, Transition } from "@headlessui/react";
+import { useRecoilState } from "recoil";
+import { modalState } from "../atoms/modalAtoms";
 
 const Post = ({
   id,
@@ -42,6 +46,7 @@ const Post = ({
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
+  const [isOpen, setIsOpen] = useRecoilState(modalState);
 
   // likes
   useEffect(
@@ -105,104 +110,47 @@ const Post = ({
     });
   };
   return (
-    <div className="bg-white my-7 border border-black rounded-3xl relative ">
-      {/* img */}
-      <Nextlink passHref href={`/postdetail/${id}`}>
-      <div className="bg-gray-100 p-10 rounded-3xl">
-        <div className=" bg-white shadow-2xl shadow-gray-900">
-          <img src={img} alt="" className="object-cover w-full" />
-        </div>
-      </div>
-      </Nextlink>
-      {/* Button */}
-      {session && (
-        <div className=" flex  justify-between px-4 pt-4 h-300">
-          <div className="flex space-x-4 items-center">
-            {hasLiked ? (
-              <BookmarkIcon
-                onClick={likePost}
-                className="btn text-red-500"
-              />
-            ) : (
-              <BookmarkIcon onClick={likePost} className="btn" />
-            )}
-            {/* <ChatIcon className="btn" />
-            <PaperAirplaneIcon className="btn rotate-45" /> */}
-          </div>
-          {/* <BookmarkIcon className="btn" /> */}
-          <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-center">
-          {prefectures}
-          {placeInfo}
-          </p>
-        </div>
-      )}
-      <div className="">
-        {likes.length > 0 && (
-          <p className="font-bold ml-1 ">{likes.length} post</p>
-        )}
-      </div>
-      {/* header */}
-      {/* <div className="flex items-center p-5 truncate ">
-        <img
-          src={profileImg}
-          alt=""
-          className=" rounded-full h-12 w-12 object-contain border p-1 mr-3"
-        />
-        <p className="flex-1 font-bold">{accountName}</p>
-        prefectures/place
-
-        <DotsHorizontalIcon className="h-5" />
-      </div> */}
-
-      {/* caption */}
-      <p className="px-10 py-5 truncate font-bold">
-        <span>{caption}</span>
-      </p>
-
-      {/* comments */}
-      {/* {comments.length > 0 && (
-        <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
-          {comments.map((comment) => (
-            <div key={comment.id} className="flex items-center space-x-2 mb-3">
-              <img
-                src={comment.data().userImage}
-                alt=""
-                className="h-7 rounded-full"
-              />
-              <p className="flex-1 text-sm">
-                <span className="font-bold">{comment.data().accountName}</span>{" "}
-                {comment.data().comment}
-              </p>
-              <Moment fromNow className="pr-5 text-xs text-gray-600">
-                {comment.data().timestamp?.toDate()}
-              </Moment>
+    <>
+      <div className="bg-white my-7 border border-black rounded-3xl relative ">
+        {/* img */}
+        <Nextlink passHref href={`/postdetail/${id}`}>
+          <div className="bg-gray-100 p-10 rounded-3xl">
+            <div className=" bg-white shadow-2xl shadow-gray-900">
+              <img src={img} alt="" className="object-cover w-full" />
             </div>
-          ))}
-        </div>
-      )} */}
+          </div>
+        </Nextlink>
+        {/* Button */}
 
-      {/* inputbox */}
-      {/* {session && (
-        <form action="" className="flex items-center p-4">
-          <EmojiHappyIcon className="h-7" />
-          <input
-            type="text"
-            className=" border-none flex-1 focus:ring-0 outline-none"
-            placeholder="コメントを残す..."
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-          />
-          <button
-            type="submit"
-            disabled={!comment.trim()}
-            onClick={sendComment}
-            className=" text-blue-400 font-semibold"
-          >
-            送信
-          </button>
-        </form>
-      )} */}
-    </div>
+        {session && (
+          <div className=" flex  justify-between px-4 pt-4 h-300">
+            <div className="flex space-x-4 items-center">
+              {hasLiked ? (
+                <BookmarkIcon onClick={likePost} className="btn text-red-500" />
+              ) : (
+                <BookmarkIcon onClick={likePost} className="btn" />
+              )}
+              {/* <ChatIcon className="btn" />
+            <PaperAirplaneIcon className="btn rotate-45" /> */}
+            </div>
+            {/* <BookmarkIcon className="btn" /> */}
+            <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-center">
+              {prefectures}
+              {placeInfo}
+            </p>
+          </div>
+        )}
+        <div className="">
+          {likes.length > 0 && (
+            <p className="font-bold ml-1 ">{likes.length} post</p>
+          )}
+        </div>
+        {/* caption */}
+        <p className="px-10 py-5 truncate font-bold">
+          <span>{caption}</span>
+        </p>
+      </div>
+    </>
   );
 };
 

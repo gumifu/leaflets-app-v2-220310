@@ -17,7 +17,7 @@ const Header = () => {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
   const router = useRouter();
-  console.log(session);
+  // console.log(session);
   return (
     <div className="  sticky top-10 m-5 z-50 ">
       <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black rounded-full bg-opacity-20 backdrop-blur-md">
@@ -73,7 +73,10 @@ const Header = () => {
                   3
                 </div>
               </div>
-              <PlusCircleIcon onClick={()=> setOpen(true)} className='navBtn text-white '/>
+              <PlusCircleIcon
+                onClick={() => setOpen(true)}
+                className="navBtn text-white "
+              />
               <UserGroupIcon className="navBtn text-white" />
               <HeartIcon className="navBtn text-white" />
               {/* <UserCircleIcon className='navBtn text-gray-300' /> */}

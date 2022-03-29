@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { AddImgModal } from "../components/AddImgModal";
 import Flyers from "../components/Flyers";
 import Header from "../components/Header";
 
@@ -15,9 +14,6 @@ export default function Home() {
       <Header />
       {/* feed */}
       <Flyers />
-
-      {/* modal */}
-      <AddImgModal />
 
       {/* <main className={styles.main}>
 
