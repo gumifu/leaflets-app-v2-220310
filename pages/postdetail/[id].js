@@ -226,7 +226,7 @@ export default Post;
 
 export async function getStaticProps({ params }) {
   const id = params.id;
-  const postSnapshot = await getDoc(doc(db, "posts", id,"likes",id));
+  const postSnapshot = await getDoc(doc(db, "posts", id));
   // const post = postSnapshot.data();
   const post1 = postSnapshot.data();
   const post = JSON.parse(JSON.stringify(post1));

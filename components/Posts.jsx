@@ -50,7 +50,6 @@ const Posts = () => {
       >
         {/* Post */}
         {posts.map((post) => (
-          <>
             <Post
               key={post.id}
               id={post.id}
@@ -65,7 +64,6 @@ const Posts = () => {
               // shopTel={ post.data().shopTel}
               // shopHomepage={ post.data().shopHomepage}
             />
-          </>
         ))}
       </Masonry>
     </>

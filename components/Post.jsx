@@ -1,12 +1,6 @@
 import {
   BookmarkIcon,
-  ChatIcon,
-  DotsHorizontalIcon,
-  EmojiHappyIcon,
-  HeartIcon,
-  PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
 import {
   addDoc,
   collection,
@@ -17,16 +11,15 @@ import {
   query,
   serverTimestamp,
   setDoc,
-  getDoc,
 } from "firebase/firestore";
 import { useSession } from "next-auth/react";
-import { Fragment, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Moment from "react-moment";
 import { db } from "../firebase";
 import Nextlink from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
-import { modalState } from "../atoms/modalAtoms";
+// import { modalState } from "../atoms/modalAtoms";
 
 const Post = ({
   id,
@@ -46,7 +39,7 @@ const Post = ({
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
-  const [isOpen, setIsOpen] = useRecoilState(modalState);
+  // const [isOpen, setIsOpen] = useRecoilState(modalState);
 
   // likes
   useEffect(
@@ -121,7 +114,6 @@ const Post = ({
           </div>
         </Nextlink>
         {/* Button */}
-
         {session && (
           <div className=" flex  justify-between px-4 pt-4 h-300">
             <div className="flex space-x-4 items-center">
