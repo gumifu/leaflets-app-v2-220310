@@ -7,19 +7,20 @@ import {
   PaperAirplaneIcon,
   MenuIcon,
 } from "@heroicons/react/outline";
-import { HomeIcon, UserCircleIcon } from "@heroicons/react/solid";
+import { HomeIcon } from "@heroicons/react/solid";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtoms";
+import Nextlink from "next/link";
 
-const Header = () => {
+  const Header = () => {
   const { data: session } = useSession();
   const [open, setOpen] = useRecoilState(modalState);
   const router = useRouter();
-  // console.log(session);
+  // console.log(session.user.uid);
   return (
-    <div className="  sticky top-10 m-5 z-50 ">
+    <div className="sticky top-10 m-5 z-50 mb-20">
       <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black rounded-full bg-opacity-20 backdrop-blur-md">
         {/* left */}
         <div
@@ -78,8 +79,9 @@ const Header = () => {
                 className="navBtn text-white "
               />
               <UserGroupIcon className="navBtn text-white" />
-              <HeartIcon className="navBtn text-white" />
-              {/* <UserCircleIcon className='navBtn text-gray-300' /> */}
+              {console.log(session.user.uid)}
+                <HeartIcon className="navBtn text-white" />
+
               <img
                 onClick={signOut}
                 src={session.user.image}

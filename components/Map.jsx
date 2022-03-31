@@ -14,7 +14,7 @@ export const Map = ({ coordinates }) => {
   };
 
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+    <div style={{ height: "30vh", width: "100%" }}>
       <GoogleMapReact
         // bootstrapURLKeys={{ key: process.env.GOOGLE_MAP_API_KEY }}
         bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_GOOGLE_MAP_KEY }}

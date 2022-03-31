@@ -14,7 +14,7 @@ const Flyers = () => {
       }`}
     >
       {/* section */}
-      <section className="col-span-5">
+      <section className="col-span-5 ml-5">
         {/* Stories */}
         {/* <Stories/> */}
         {/* Pots */}
@@ -22,9 +22,9 @@ const Flyers = () => {
       </section>
 
       {session && (
-        <section className="hidden xl:inline-grid md:col-span-1">
+        <section className="hidden xl:inline-grid xl:col-span-1">
           {/* MiniProfile */}
-          <div className="fixed top-30">
+          <div className="fixed top-30 mr-5">
             <MiniProfile />
             {/* Suggestion */}
             <Suggestions />

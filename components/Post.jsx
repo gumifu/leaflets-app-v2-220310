@@ -111,7 +111,7 @@ const Post = ({
   };
   return (
     <>
-      <div className="bg-white my-7 border border-black rounded-3xl relative ">
+      <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="bg-gray-100 p-10 rounded-3xl">

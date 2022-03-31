@@ -49,8 +49,6 @@ const Post = ({ post }) => {
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
-  // const [modalOpen, setModalOpen] = useState(false);
-  const [postDetail, setPostDetail] = useState([]);
 
   useEffect(
     () =>
@@ -114,13 +112,13 @@ const Post = ({ post }) => {
   };
 
   return (
-    <>
+    <div className="bg-gradient-to-br from-blue-500 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
       <Header/>
-    <div className="bg-white my-7 border border-black rounded-3xl relative max-w-7xl mx-auto">
 
-      <button type="button" onClick={() => router.replace("/")}>
+      <button className="ml-15 pl-15 h-16 w-16 text-white bg-red-400 rounded-full" type="button" onClick={() => router.replace("/")}>
         X
       </button>
+      <div className="bg-white my-7 border border-black rounded-3xl relative max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2">
       {/* img */}
       <div className="bg-gray-100 p-10 rounded-3xl md:col-span-1">
@@ -162,12 +160,12 @@ const Post = ({ post }) => {
           />
           <p className="flex-1 font-bold">{accountName}</p>
           <DotsHorizontalIcon className="h-5" />
-        </div>
-
+            </div>
         {/* caption */}
         <p className="px-10 py-5 truncate font-bold">
-          <span>{caption}</span>
+              <span>{caption}</span>
         </p>
+
         {/* comments */}
         {comments.length > 0 && (
           <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
@@ -220,7 +218,7 @@ const Post = ({ post }) => {
       </div>
     </div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -228,7 +226,7 @@ export default Post;
 
 export async function getStaticProps({ params }) {
   const id = params.id;
-  const postSnapshot = await getDoc(doc(db, "posts", id));
+  const postSnapshot = await getDoc(doc(db, "posts", id,"likes",id));
   // const post = postSnapshot.data();
   const post1 = postSnapshot.data();
   const post = JSON.parse(JSON.stringify(post1));
