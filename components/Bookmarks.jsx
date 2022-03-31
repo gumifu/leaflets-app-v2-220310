@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Post from "./Post";
 import Masonry from "react-masonry-css";
+import Bookmark from "./Bookmark";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -13,20 +14,7 @@ const breakpointColumnsObj = {
   500: 1,
 };
 
-// const posts = [
-//     {
-//         id: '123',
-//         shopName: 'ジーズアカデミーFUKUOKA／エンジニア養成学校',
-//         shopImg: '/gs-logo.png',
-//         img: 'https://gsacademy.jp/uploads/og-3.png',
-//         caption: '福岡市エンジニアフレンドリーシティに所属。エンジニアとしての就職だけでなく、フリーランスになるためのお仕事紹介や共同受託仲間探しまでサポート。',
-//         placeInfo:'福岡県福岡市中央区大名 1-3-41 プリオ大名 1F・2F',
-//         shopTel:'092-761-5777',
-//         shopEmail:'fukuoka@gsacademy.jp',
-//     },
-// ]
-
-const Posts = () => {
+const Bookmarks = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(
@@ -39,9 +27,6 @@ const Posts = () => {
       ),
     [db]
   );
-  // const hoge = posts.map((post) => {
-  //     console.log(post.id);
-  // })
 
   return (
     <>
@@ -53,7 +38,7 @@ const Posts = () => {
         {/* Post */}
         {posts.map((post) => (
 
-            <Post
+            <Bookmark
               key={post.id}
               id={post.id}
               accountName={post.data().accountName}
@@ -73,4 +58,4 @@ const Posts = () => {
   );
 };
 
-export default Posts;
+export default Bookmarks;

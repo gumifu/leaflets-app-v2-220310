@@ -7,6 +7,7 @@ import {
   PaperAirplaneIcon,
   MenuIcon,
 } from "@heroicons/react/outline";
+import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
 import { HomeIcon } from "@heroicons/react/solid";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -63,23 +64,19 @@ import Nextlink from "next/link";
             className="navBtn text-white"
           />
           <MenuIcon className="h-6 md:hidden cursor-pointer text-white" />
-
           {session ? (
             <>
-              <div className="relative navBtn">
-                <PaperAirplaneIcon className="navBtn rotate-45 text-white" />
+              {/* <div className="relative navBtn">
+                <PaperAirplaneIcon className="navBtn rotate-45 text-white animate-pulse" />
                 <div className=" absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center animate-pulse text-white">
                   3
                 </div>
-              </div>
-              {/* <PlusCircleIcon
-                onClick={() => setOpen(true)}
-                className="navBtn text-white "
-              /> */}
-              <UserGroupIcon className="navBtn text-white" />
-              {console.log(session.user.uid)}
-                <HeartIcon className="navBtn text-white" />
-
+              </div> */}
+              {/* <UserGroupIcon className="navBtn text-white" />
+              {console.log(session.user.uid)} */}
+              <BookmarkSolidIcon
+                onClick={() => router.push("/bookmarks")}
+                className="btn text-blue-500" />
               <img
                 onClick={signOut}
                 src={session.user.image}

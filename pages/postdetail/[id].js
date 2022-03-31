@@ -58,6 +58,8 @@ const Post = ({ post }) => {
     [db, id]
   );
 
+
+
   //hasliked
   useEffect(
     () =>
@@ -95,6 +97,9 @@ const Post = ({ post }) => {
       ),
     [db, id]
   );
+  comments.map((comment) => {
+    console.log(comment.id);
+  })
 
   //send comment to firebase!
   const sendComment = async (e) => {
@@ -102,7 +107,7 @@ const Post = ({ post }) => {
 
     const commentToSend = comment;
     setComment("");
-
+// コメントを入れる
     await addDoc(collection(db, "posts", id, "comments"), {
       comment: commentToSend,
       username: session.user.name,

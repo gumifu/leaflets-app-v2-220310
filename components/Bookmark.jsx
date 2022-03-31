@@ -23,7 +23,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
 // import { modalState } from "../atoms/modalAtoms";
 
-const Post = ({
+const Bookmark = ({
   id,
   accountName,
   profileImg,
@@ -110,6 +110,9 @@ const Post = ({
   };
   return (
     <>
+      {hasLiked && (
+        <>
+
       <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
@@ -136,16 +139,6 @@ const Post = ({
               ) : (
                 <BookmarkIcon onClick={likePost} className="btn" />
               )}
-
-              {/* <div className="relative navBtn">
-                <PaperAirplaneIcon className="navBtn rotate-45 text-white animate-pulse" />
-
-                <div className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center animate-pulse text-white">
-                  3
-                </div>
-              </div> */}
-              {/* <ChatIcon className="btn" />
-            <PaperAirplaneIcon className="btn rotate-45" /> */}
             </div>
             {/* <BookmarkIcon className="btn" /> */}
             <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
@@ -160,8 +153,10 @@ const Post = ({
           <span>{caption}</span>
         </p>
       </div>
+        </>
+      )}
     </>
   );
 };
 
-export default Post;
+export default Bookmark;
