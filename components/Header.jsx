@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import Nextlink from "next/link";
 
-  const Header = () => {
+const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
   // console.log(session.user.uid);
@@ -46,15 +46,25 @@ import Nextlink from "next/link";
         </div>
 
         {/* center */}
-        <div className="relative mt-1 p-3 rounded-md max-w-sm">
+        <div className=" relative flex mt-1 p-3 rounded-md max-w-lg items-center">
           <div className="absolute inset-y-0 pl-3 flex items-center">
-            <SearchIcon className="h-5 w-5 text-gray-500" />
+            <SearchIcon className="h-5 w-5 text-gray-50" />
           </div>
-          <input
-            className="flex-grow  transparent h-14 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
-            type="text"
-            placeholder="検索"
-          />
+          {/* <div
+            onClick={() => router.push("/filters")}
+            className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
+          >
+            <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
+              <p>条件検索</p>
+            </div> */}
+            <div className="">
+              <input
+                className="flex-grow  transparent h-14 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
+                type="text"
+                placeholder="検索"
+              />
+            </div>
+          {/* </div> */}
         </div>
 
         {/* right */}
@@ -76,7 +86,8 @@ import Nextlink from "next/link";
               {console.log(session.user.uid)} */}
               <BookmarkSolidIcon
                 onClick={() => router.push("/bookmarks")}
-                className="btn text-blue-500" />
+                className="btn text-blue-500"
+              />
               <img
                 onClick={signOut}
                 src={session.user.image}

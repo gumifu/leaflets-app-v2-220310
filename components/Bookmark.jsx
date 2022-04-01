@@ -1,6 +1,4 @@
-import {
-  BookmarkIcon,
-} from "@heroicons/react/outline";
+import { BookmarkIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
 
 import {
@@ -112,47 +110,50 @@ const Bookmark = ({
     <>
       {hasLiked && (
         <>
-
-      <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
-        {/* img */}
-        <Nextlink passHref href={`/postdetail/${id}`}>
-          <div className="bg-gray-100 p-10 rounded-3xl">
-            <div className=" bg-white shadow-2xl shadow-gray-900">
-              <img src={img} alt="" className="object-cover w-full" />
-            </div>
-          </div>
-        </Nextlink>
-        {/* Button */}
-        {session && (
-          <div className=" flex  justify-between px-4 pt-4 h-300">
-            <div className="flex space-x-4 items-center">
-              {hasLiked ? (
-                <div className="relative navBtn">
-                <BookmarkSolidIcon onClick={likePost} className="btn text-blue-500" />
-                <div className="">
-                  {likes.length > 0 && (
-                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">{likes.length}
-                      </p>
+          <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
+            {/* img */}
+            <Nextlink passHref href={`/postdetail/${id}`}>
+              <div className="bg-gray-100 p-10 rounded-3xl">
+                <div className=" bg-white shadow-2xl shadow-gray-900">
+                  <img src={img} alt="" className="object-cover w-full" />
+                </div>
+              </div>
+            </Nextlink>
+            {/* Button */}
+            {session && (
+              <div className=" flex  justify-between px-4 pt-4 h-300">
+                <div className="flex space-x-4 items-center">
+                  {hasLiked ? (
+                    <div className="relative navBtn">
+                      <BookmarkSolidIcon
+                        onClick={likePost}
+                        className="btn text-blue-500"
+                      />
+                      <div className="">
+                        {likes.length > 0 && (
+                          <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                            {likes.length}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <BookmarkIcon onClick={likePost} className="btn" />
                   )}
                 </div>
-                </div>
-              ) : (
-                <BookmarkIcon onClick={likePost} className="btn" />
-              )}
-            </div>
-            {/* <BookmarkIcon className="btn" /> */}
-            <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
-              {prefectures}
-              {placeInfo}
+                {/* <BookmarkIcon className="btn" /> */}
+                <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
+                  {prefectures}
+                  {placeInfo}
+                </p>
+              </div>
+            )}
+
+            {/* caption */}
+            <p className="px-10 py-5 truncate font-bold">
+              <span>{caption}</span>
             </p>
           </div>
-        )}
-
-        {/* caption */}
-        <p className="px-10 py-5 truncate font-bold">
-          <span>{caption}</span>
-        </p>
-      </div>
         </>
       )}
     </>

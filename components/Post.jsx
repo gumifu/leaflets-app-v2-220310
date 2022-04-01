@@ -1,6 +1,4 @@
-import {
-  BookmarkIcon,
-} from "@heroicons/react/outline";
+import { BookmarkIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
 
 import {
@@ -125,16 +123,31 @@ const Post = ({
             <div className="flex space-x-4 items-center">
               {hasLiked ? (
                 <div className="relative navBtn">
-                <BookmarkSolidIcon onClick={likePost} className="btn text-blue-500" />
-                <div className="">
-                  {likes.length > 0 && (
-                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">{likes.length}
+                  <BookmarkSolidIcon
+                    onClick={likePost}
+                    className="btn text-blue-500"
+                  />
+                  <div className="">
+                    {likes.length > 0 && (
+                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                        {likes.length}
                       </p>
-                  )}
-                </div>
+                    )}
+                  </div>
                 </div>
               ) : (
-                <BookmarkIcon onClick={likePost} className="btn" />
+                <>
+                  <div className="relative navBtn">
+                    <BookmarkIcon onClick={likePost} className="btn" />
+                    <div className="">
+                      {likes.length > 0 && (
+                        <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
+                          {likes.length}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </>
               )}
 
               {/* <div className="relative navBtn">

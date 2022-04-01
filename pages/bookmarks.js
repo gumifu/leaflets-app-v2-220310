@@ -12,11 +12,10 @@ export default function Home() {
         <meta name="description" content="Leaflets app by create next app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      ハロー！！
       {/* header */}
       <Header />
       {/* feed */}
-      <BookmarkFlyers/>
+      <BookmarkFlyers />
       {/* <main className={styles.main}>
 
         <p className={styles.description}>

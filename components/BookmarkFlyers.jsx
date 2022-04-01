@@ -10,12 +10,12 @@ const BookmarkFlyers = () => {
   const { data: session } = useSession();
   return (
     <main
-      className={` grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mx-auto ${
+      className={` grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto ${
         !session && "!grid-cols-2"
       }`}
     >
-      {/* section */}
-      <section className="col-span-5 ml-5">
+      <section className="col-span-2 ml-5">
+        {/* section */}
         {/* Stories */}
         {/* <Stories/> */}
         {/* Pots */}

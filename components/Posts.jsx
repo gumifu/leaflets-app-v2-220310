@@ -52,21 +52,20 @@ const Posts = () => {
       >
         {/* Post */}
         {posts.map((post) => (
-
-            <Post
-              key={post.id}
-              id={post.id}
-              accountName={post.data().accountName}
-              profileImg={post.data().profileImg}
-              img={post.data().image}
-              caption={post.data().caption}
-              prefectures={post.data().prefectures}
-              placeInfo={post.data().place}
-              // shopName={ post.data().shopName}
-              // shopEmail={ post.data().shopEmail}
-              // shopTel={ post.data().shopTel}
-              // shopHomepage={ post.data().shopHomepage}
-            />
+          <Post
+            key={post.id}
+            id={post.id}
+            accountName={post.data().accountName}
+            profileImg={post.data().profileImg}
+            img={post.data().image}
+            caption={post.data().caption}
+            prefectures={post.data().prefectures}
+            placeInfo={post.data().place}
+            // shopName={ post.data().shopName}
+            // shopEmail={ post.data().shopEmail}
+            // shopTel={ post.data().shopTel}
+            // shopHomepage={ post.data().shopHomepage}
+          />
         ))}
       </Masonry>
     </>
