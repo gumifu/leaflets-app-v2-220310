@@ -50,9 +50,6 @@ const Post = ({
       ),
     [db, id]
   );
-  // likes.map((like) => {
-  //   console.log(like.id);
-  // })
 
   //hasliked
   useEffect(

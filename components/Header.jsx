@@ -50,13 +50,13 @@ const Header = () => {
           <div className="absolute inset-y-0 pl-3 flex items-center">
             <SearchIcon className="h-5 w-5 text-gray-50" />
           </div>
-          {/* <div
+          <div
             onClick={() => router.push("/filters")}
             className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
           >
             <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
               <p>条件検索</p>
-            </div> */}
+            </div>
             <div className="">
               <input
                 className="flex-grow  transparent h-14 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
@@ -64,7 +64,7 @@ const Header = () => {
                 placeholder="検索"
               />
             </div>
-          {/* </div> */}
+          </div>
         </div>
 
         {/* right */}
