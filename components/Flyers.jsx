@@ -10,8 +10,8 @@ const Flyers = () => {
   const { data: session } = useSession();
   return (
     <main>
-      <div className="max-w-7xl mx-auto mb-10 px-8 sm:px-16 ">
-        <section className="pt-6">
+      <div className="max-w-7xl mx-auto mb-5 px-8 sm:px-16 ">
+        <section className="">
           <FilterdCard />
         </section>
       </div>

@@ -5,7 +5,7 @@ import Header from "../components/Header";
 
 const Filters = () => {
   return (
-    <div className="bg-gradient-to-br from-blue-500 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
+    <div className="bg-main">
       <section>
         <Header />
       </section>

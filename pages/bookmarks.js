@@ -6,7 +6,7 @@ import Header from "../components/Header";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-br from-blue-500 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
+    <div className="bg-main">
       <Head>
         <title>leaflets</title>
         <meta name="description" content="Leaflets app by create next app" />
