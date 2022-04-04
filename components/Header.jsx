@@ -19,12 +19,12 @@ const Header = () => {
   const router = useRouter();
   // console.log(session.user.uid);
   return (
-    <div className="sticky top-10 m-5 z-50 mb-20">
-      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black rounded-full bg-opacity-20 backdrop-blur-md">
+    <div className="sticky md:top-10 top-5 m-5 z-50 md:mb-20 mb-10">
+      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black rounded-full bg-opacity-20 backdrop-blur-md px-4">
         {/* left */}
         <div
           onClick={() => router.push("/")}
-          className=" ml-8 my-2  relative w-20 h-20 hidden lg:inline-grid cursor-pointer "
+          className=" my-2  relative w-20 h-20 hidden lg:inline-grid cursor-pointer "
         >
           <Image
             src="/logo-main-white.svg"
@@ -35,7 +35,7 @@ const Header = () => {
         </div>
         <div
           onClick={() => router.push("/")}
-          className="ml-5 my-2 relative w-16 h-16 lg:hidden flex-shrink-0 cursor-pointer"
+          className="my-2 relative w-16 h-16 lg:hidden flex-shrink-0 cursor-pointer"
         >
           <Image
             src="/logo-mark-white.svg"
@@ -61,7 +61,7 @@ const Header = () => {
                   <SearchIcon className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
-                  className=" h-14 bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
+                  className=" md:h-14 h-10 bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
                   type="text"
                   placeholder="検索"
                 />
@@ -72,27 +72,27 @@ const Header = () => {
         )}
 
         {/* right */}
-        <div className="flex items-center mr-5 justify-end space-x-4">
+        <div className="flex items-center md:mr-5 justify-end md:space-x-4 space-x-0">
           <HomeIcon
             onClick={() => router.push("/")}
-            className="navBtn text-white"
+            className="navBtn text-white h-8"
           />
-          <MenuIcon className="h-6 md:hidden cursor-pointer text-white" />
           {session ? (
             <>
+          <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" />
               <BookmarkSolidIcon
                 onClick={() => router.push("/bookmarks")}
-                className="btn text-blue-500"
+                className="btn h-10 hidden sm:inline-block  text-blue-500"
               />
               <img
                 onClick={signOut}
                 src={session.user.image}
                 alt="profile pic"
-                className="h-10 w-10 object-cover rounded-full cursor-pointer"
+                className="hidden sm:inline-block h-10 w-10 object-cover rounded-full cursor-pointer"
               />
             </>
           ) : (
-            <button className="text-blue-400 text-lg" onClick={signIn}>
+            <button className="text-blue-400 text-lg pr-8" onClick={signIn}>
               サインイン
             </button>
           )}

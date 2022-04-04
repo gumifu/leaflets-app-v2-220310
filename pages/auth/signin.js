@@ -9,7 +9,7 @@ export default function signIn({ providers }) {
         <img src="/logo-main-white.svg" className="w-60" />
 
         <p className="font-lg italic mt-5 text-gray-100">leafletsへようこそ!</p>
-        <div className="mt-40">
+        <div className="md:mt-40 mt-20">
           {Object.values(providers).map((provider) => (
             <div key={provider.name}>
               <button
