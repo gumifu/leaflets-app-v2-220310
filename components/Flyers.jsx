@@ -20,7 +20,7 @@ const Flyers = () => {
           !session && "!grid-cols-2"
         }`}
       >
-        <section className="col-span-5 ml-5">
+        <section className="col-span-5 mx-3">
           {/* section */}
           {/* Stories */}
           {/* <Stories/> */}

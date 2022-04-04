@@ -42,7 +42,7 @@ const FilterdCard = ({ placeholder }) => {
         <input
           value={classificationRefInput}
           onChange={(e) => setClassificationRefInput(e.target.value)}
-          className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-900 rounded-lg h-14"
+          className="flex-grow md:pl-5 bg-transparent w-full text-sm text-gray-900 rounded-lg h-14"
           type="text"
           placeholder={placeholder || "例：カフェ"}
         />
@@ -52,13 +52,13 @@ const FilterdCard = ({ placeholder }) => {
         <div className="flex">
           <button
             onClick={resetInput}
-            className="flex-grow bg-gray-500 text-white px-20 py-5 hover:bg-opacity-75"
+            className="flex-grow bg-gray-500 text-white md:px-20 py-5 hover:bg-opacity-75 "
           >
             Cancel
           </button>
           <button
             onClick={search}
-            className="flex-grow text-white bg-blue-500 px-20 py-5 rounded-sm hover:bg-opacity-75"
+            className="flex-grow text-white bg-blue-500 md:px-20 py-5 rounded-sm hover:bg-opacity-75"
           >
             Search
           </button>
