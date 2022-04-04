@@ -119,16 +119,16 @@ const Post = ({ post }) => {
       <Header />
 
       <button
-        className="ml-15 pl-15 h-16 w-16 text-white bg-red-400 rounded-full"
+        className=" ml-16 h-14 w-16 text-white hover:bg-blue-500 duration-200 ease-in-out rounded-xl"
         type="button"
-        onClick={() => router.replace("/")}
+        onClick={() => router.back()}
       >
-        X
+        戻る
       </button>
       <div className="bg-white my-7 border border-black rounded-3xl relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
           {/* img */}
-          <div className="bg-gray-100 p-10 rounded-3xl md:col-span-1">
+          <div className="bg-gray-100 h-full p-10 rounded-l-3xl md:col-span-1">
             <div className=" bg-white shadow-2xl shadow-gray-900">
               <img src={post.image} alt="" className="object-cover w-full" />
             </div>
@@ -146,7 +146,6 @@ const Post = ({ post }) => {
                   ) : (
                     <BookmarkIcon onClick={likePost} className="btn" />
                   )}
-                  <ChatIcon className="btn" />
                   <PaperAirplaneIcon className="btn rotate-45" />
                 </div>
                 {/* <BookmarkIcon className="btn" /> */}
@@ -160,16 +159,6 @@ const Post = ({ post }) => {
               {likes.length > 0 && (
                 <p className="font-bold ml-1 ">{likes.length} post</p>
               )}
-            </div>
-            {/* header */}
-            <div className="flex items-center p-5 truncate ">
-              <img
-                src={profileImg}
-                alt=""
-                className=" rounded-full h-12 w-12 object-contain border p-1 mr-3"
-              />
-              <p className="flex-1 font-bold">{accountName}</p>
-              <DotsHorizontalIcon className="h-5" />
             </div>
             {/* caption */}
             <p className="px-10 py-5 truncate font-bold">

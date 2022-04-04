@@ -29,7 +29,7 @@ const Flyers = () => {
         </section>
 
         {session && (
-          <section className="hidden lg:inline-grid lg:col-span-1">
+          <section className="hidden 2xl:inline-grid 2xl:col-span-1">
             {/* MiniProfile */}
             <div className="fixed top-30 mr-5">
               <MiniProfile />

@@ -3,7 +3,7 @@ import Header from "../../components/Header";
 
 export default function signIn({ providers }) {
   return (
-    <div className="bg-gradient-to-br from-blue-900 to-gray-900 h-screen overflow-y-scroll scrollbar-hide">
+    <div className="bg-main">
       <Header />
       <div className="flex flex-col items-center justify-center min-h-screen -mt-32 py-2  px-14">
         <img src="/logo-main-white.svg" className="w-60" />

@@ -46,26 +46,30 @@ const Header = () => {
         </div>
 
         {/* center */}
-        <div className=" relative flex mt-1 p-3 rounded-md max-w-sm items-center">
-          <div className="absolute inset-y-0 pl-3 flex items-center">
-            <SearchIcon className="h-5 w-5 text-gray-50" />
-          </div>
-          <div
-            onClick={() => router.push("/filters")}
-            className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
-          >
-            <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
-              <p>条件検索</p>
-            </div>
+        {session && (
+          <div className=" relative flex mt-1 p-3 rounded-md max-w-sm items-center">
+            {/* <div
+              onClick={() => router.push("/filters")}
+              className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
+            > */}
+            {/* <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
+                <p>条件検索</p>
+              </div> */}
             <div className="">
-              <input
-                className="flex-grow  transparent h-14 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
-                type="text"
-                placeholder="検索"
-              />
+              <div className="relative mt-1 p-3 rounded-md max-w-sm ">
+                <div className="absolute inset-y-0 pl-3 flex items-center">
+                  <SearchIcon className="h-5 w-5 text-gray-500" />
+                </div>
+                <input
+                  className=" h-14 bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
+                  type="text"
+                  placeholder="検索"
+                />
+              </div>
+              {/* </div> */}
             </div>
           </div>
-        </div>
+        )}
 
         {/* right */}
         <div className="flex items-center mr-5 justify-end space-x-4">

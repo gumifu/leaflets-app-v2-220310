@@ -32,6 +32,9 @@ export default function AdminIndex() {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
+  const [selectedFile3, setSelectedFile3] = useState(null);
+  const [selectedFile4, setSelectedFile4] = useState(null);
+  const [selectedFile5, setSelectedFile5] = useState(null);
   const router = useRouter();
 
   // firebase post!!!
@@ -224,18 +227,18 @@ export default function AdminIndex() {
                     <div className="flex items-center justify-center">
                       <p>カテゴリー</p>
 
-                    <select
-                      ref={classificationRef}
-                      name="classification"
-                      className="ml-10"
-                    >
-                      <option value="カフェ">カフェ</option>
-                      <option value="スクール">スクール</option>
-                      <option value="美容室">美容室</option>
-                      <option value="飲食店">飲食店</option>
-                      <option value="観光地">観光地</option>
-                      <option value="その他">その他</option>
-                    </select>
+                      <select
+                        ref={classificationRef}
+                        name="classification"
+                        className="ml-10"
+                      >
+                        <option value="カフェ">カフェ</option>
+                        <option value="スクール">スクール</option>
+                        <option value="美容室">美容室</option>
+                        <option value="飲食店">飲食店</option>
+                        <option value="観光地">観光地</option>
+                        <option value="その他">その他</option>
+                      </select>
                     </div>
                     {/* キャプションを追加 */}
                     <div className="mt-2 border-b-2">
@@ -318,7 +321,10 @@ export default function AdminIndex() {
           </div>
         </>
       ) : (
-        <div onClick={() => router.push("/adminsignin")} className=" cursor-pointer  flex items-center justify-center h-full w-full">
+        <div
+          onClick={() => router.push("/adminsignin")}
+          className=" cursor-pointer  flex items-center justify-center h-full w-full"
+        >
           <h1>ログインを行なってください</h1>
         </div>
       )}
