@@ -23,14 +23,14 @@ const FilterdCard = ({ placeholder }) => {
   };
 
   return (
-    <div className="bg-white p-10 rounded-lg">
+    <div className="bg-white lg:p-10 md:p-8 p-4 rounded-lg">
       <p>■ エリア / カテゴリーを入力</p>
-      <div className="flex items-center rounded-md mb-5 py-2 md:shadow-sm border-none">
+      <div className="flex items-center rounded-md lg:mb-5 mb-1 py-2 md:shadow-sm border-none">
         <select
           value={prefecRefInput}
           onChange={(e) => setPrefecRefInput(e.target.value)}
           name="prefectures"
-          className="rounded-lg mr-1 h-14"
+          className="rounded-lg mr-1 lg:h-14 h-10"
         >
           <option value="全国">全国</option>
           <option value="福岡県">福岡県</option>
@@ -42,7 +42,7 @@ const FilterdCard = ({ placeholder }) => {
         <input
           value={classificationRefInput}
           onChange={(e) => setClassificationRefInput(e.target.value)}
-          className="flex-grow md:pl-5 bg-transparent w-full text-sm text-gray-900 rounded-lg h-14"
+          className="flex-grow md:pl-5 bg-transparent w-full text-sm text-gray-900 rounded-lg lg:h-14 h-10"
           type="text"
           placeholder={placeholder || "例：カフェ"}
         />
@@ -52,13 +52,13 @@ const FilterdCard = ({ placeholder }) => {
         <div className="flex">
           <button
             onClick={resetInput}
-            className="flex-grow bg-gray-500 text-white md:px-20 py-5 hover:bg-opacity-75 "
+            className="flex-grow bg-gray-500 text-white md:px-20 lg:py-5 py-2 hover:bg-opacity-75 "
           >
             Cancel
           </button>
           <button
             onClick={search}
-            className="flex-grow text-white bg-blue-500 md:px-20 py-5 rounded-sm hover:bg-opacity-75"
+            className="flex-grow text-white bg-blue-500 md:px-20 lg:py-5 py-2 rounded-sm hover:bg-opacity-75"
           >
             Search
           </button>

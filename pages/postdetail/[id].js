@@ -6,7 +6,7 @@ import {
   HeartIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
-import { HeartIcon as HeartIconFilled } from "@heroicons/react/solid";
+import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
 import {
   addDoc,
   collection,
@@ -117,103 +117,130 @@ const Post = ({ post }) => {
   return (
     <div className="bg-main">
       <Header />
-
-      <button
-        className=" ml-16 h-14 w-16 text-white hover:bg-blue-500 duration-200 ease-in-out rounded-xl"
-        type="button"
-        onClick={() => router.back()}
-      >
-        戻る
-      </button>
-      <div className="bg-white my-7 border border-black rounded-3xl relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-          {/* img */}
-          <div className="bg-gray-100 h-full p-10 rounded-l-3xl md:col-span-1">
-            <div className=" bg-white shadow-2xl shadow-gray-900">
-              <img src={post.image} alt="" className="object-cover w-full" />
-            </div>
-          </div>
-          <div className=" md:col-span-1">
-            {/* Button */}
-            {session && (
-              <div className=" flex  justify-between px-4 pt-4 h-300">
-                <div className="flex space-x-4 items-center">
-                  {hasLiked ? (
-                    <BookmarkIcon
-                      onClick={likePost}
-                      className="btn text-red-500"
-                    />
-                  ) : (
-                    <BookmarkIcon onClick={likePost} className="btn" />
-                  )}
-                  <PaperAirplaneIcon className="btn rotate-45" />
-                </div>
-                {/* <BookmarkIcon className="btn" /> */}
-                <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-center">
-                  {prefectures}
-                  {placeInfo}
-                </p>
+      <div className="mb:m-16 m-8 max-w-7xl mx-auto">
+        <button
+          className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl"
+          type="button"
+          onClick={() => router.back()}
+        >
+          <p className="">戻る</p>
+        </button>
+        <div className="bg-white border border-black rounded-sm relative max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2">
+            {/* img */}
+            <div className="bg-gray-100 h-full p-8 rounded-l-3xl md:col-span-1">
+              <div className=" bg-white shadow-2xl shadow-gray-900">
+                <img src={post.image} alt="" className="object-cover w-full" />
               </div>
-            )}
-            <div className="">
-              {likes.length > 0 && (
-                <p className="font-bold ml-1 ">{likes.length} post</p>
-              )}
             </div>
-            {/* caption */}
-            <p className="px-10 py-5 truncate font-bold">
-              <span>{caption}</span>
-            </p>
-
-            {/* comments */}
-            {comments.length > 0 && (
-              <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
-                {comments.map((comment) => (
-                  <div
-                    key={comment.id}
-                    className="flex items-center space-x-2 mb-3"
-                  >
-                    <img
-                      src={comment.data().userImage}
-                      alt=""
-                      className="h-7 rounded-full"
-                    />
-                    <p className="flex-1 text-sm">
-                      <span className="font-bold">
-                        {comment.data().accountName}
-                      </span>{" "}
-                      {comment.data().comment}
-                    </p>
-                    <Moment fromNow className="pr-5 text-xs text-gray-600">
-                      {comment.data().timestamp?.toDate()}
-                    </Moment>
+            <div className=" md:col-span-1">
+              {/* Button */}
+              {session && (
+                <div className=" flex  justify-between px-4 pt-4 h-300">
+                  <div className="flex space-x-4 items-center">
+                    {hasLiked ? (
+                      <div className="relative btn">
+                        <BookmarkSolidIcon
+                          onClick={likePost}
+                          className="btn text-blue-500"
+                        />
+                        <div className="">
+                          {likes.length > 0 && (
+                            <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                              {likes.length}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="relative btn">
+                          <BookmarkIcon onClick={likePost} className="btn" />
+                          <div className="">
+                            {likes.length > 0 && (
+                              <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
+                                {likes.length}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    <PaperAirplaneIcon className="btn rotate-45" />
                   </div>
-                ))}
-              </div>
-            )}
+                  {/* <BookmarkIcon className="btn" /> */}
+                  <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-center">
+                    {prefectures}
+                    {placeInfo}
+                  </p>
+                </div>
+              )}
+              {/* <div className="">
+                  {likes.length > 0 && (
+                    <p className="font-bold ml-1 ">{likes.length} post</p>
+                  )}
+                </div> */}
+              {/* caption */}
+              <p className="px-10 py-5 truncate font-bold">
+                <span>{caption}</span>
+              </p>
 
-            {/* inputbox */}
-            {session && (
-              <form action="" className="flex items-center p-4">
-                <EmojiHappyIcon className="h-7" />
-                <input
-                  type="text"
-                  className=" border-none flex-1 focus:ring-0 outline-none"
-                  placeholder="コメントを残す..."
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                />
-                <button
-                  type="submit"
-                  disabled={!comment.trim()}
-                  onClick={sendComment}
-                  className=" text-blue-400 font-semibold"
-                >
-                  送信
-                </button>
-              </form>
-            )}
-            <Map coordinates={post.coordinates} />
+              {/* comments */}
+              {comments.length > 0 && (
+                <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
+                  {comments.map((comment) => (
+                    <div
+                      key={comment.id}
+                      className="flex items-center space-x-2 mb-3"
+                    >
+                      <img
+                        src={comment.data().userImage}
+                        alt=""
+                        className="h-7 rounded-full"
+                      />
+                      <p className="flex-1 text-sm">
+                        <span className="font-bold">
+                          {comment.data().accountName}
+                        </span>{" "}
+                        {comment.data().comment}
+                      </p>
+                      <Moment fromNow className="pr-5 text-xs text-gray-600">
+                        {comment.data().timestamp?.toDate()}
+                      </Moment>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* inputbox */}
+              {session && (
+                <form action="" className="flex items-center p-4">
+                  <EmojiHappyIcon className="h-7" />
+                  <input
+                    type="text"
+                    className=" border-none flex-1 focus:ring-0 outline-none"
+                    placeholder="コメントを残す..."
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    disabled={!comment.trim()}
+                    onClick={sendComment}
+                    className=" text-blue-400 font-semibold"
+                  >
+                    送信
+                  </button>
+                </form>
+              )}
+              <Map coordinates={post.coordinates} />
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}`}
+                className=" cursor-pointer p-5 w-full bg-slate-400"
+              >
+                Google map
+              </a>
+            </div>
           </div>
         </div>
       </div>

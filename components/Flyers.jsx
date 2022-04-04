@@ -10,17 +10,15 @@ const Flyers = () => {
   const { data: session } = useSession();
   return (
     <main>
-      <div className="max-w-7xl mx-auto mb-5 px-8 sm:px-16 ">
-        <section className="">
-          <FilterdCard />
-        </section>
-      </div>
       <div
         className={` grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mx-auto ${
           !session && "!grid-cols-2"
         }`}
       >
         <section className="col-span-5 mx-3">
+          <div className="max-w-7xl mx-auto mb-5 px-8 sm:px-16 ">
+            <FilterdCard />
+          </div>
           {/* section */}
           {/* Stories */}
           {/* <Stories/> */}

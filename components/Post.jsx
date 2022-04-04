@@ -105,11 +105,11 @@ const Post = ({
   };
   return (
     <>
-      <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
+      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-sm relative ">
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
-          <div className="bg-gray-100 p-10 rounded-3xl">
-            <div className=" bg-white shadow-2xl shadow-gray-900">
+          <div className="bg-gray-100 p-2">
+            <div className=" bg-white shadow-lg shadow-gray-800">
               <img src={img} alt="" className="object-cover w-full" />
             </div>
           </div>
@@ -119,7 +119,7 @@ const Post = ({
           <div className=" flex  justify-between px-4 pt-4 h-300">
             <div className="flex space-x-4 items-center">
               {hasLiked ? (
-                <div className="relative navBtn">
+                <div className="relative btn">
                   <BookmarkSolidIcon
                     onClick={likePost}
                     className="btn text-blue-500"
@@ -134,7 +134,7 @@ const Post = ({
                 </div>
               ) : (
                 <>
-                  <div className="relative navBtn">
+                  <div className="relative btn">
                     <BookmarkIcon onClick={likePost} className="btn" />
                     <div className="">
                       {likes.length > 0 && (
@@ -158,7 +158,7 @@ const Post = ({
             <PaperAirplaneIcon className="btn rotate-45" /> */}
             </div>
             {/* <BookmarkIcon className="btn" /> */}
-            <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
+            <p className="px-5 py-3 ml-3 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
               {prefectures}
               {placeInfo}
             </p>
@@ -166,7 +166,7 @@ const Post = ({
         )}
 
         {/* caption */}
-        <p className="px-10 py-5 truncate font-bold">
+        <p className="md:p-5 p-2 md:text-base text-sm text-white truncate">
           <span>{caption}</span>
         </p>
       </div>

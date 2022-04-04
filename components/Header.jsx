@@ -19,12 +19,12 @@ const Header = () => {
   const router = useRouter();
   // console.log(session.user.uid);
   return (
-    <div className="sticky md:top-10 top-5 m-5 z-50 md:mb-20 mb-10">
-      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black rounded-full bg-opacity-20 backdrop-blur-md px-4">
+    <div className="sticky lg:top-10 lg:mx-5 z-50 lg:mb-20 mb-5">
+      <div className="flex  items-center justify-between m-w-6xl lg:rounded-full bg-opacity-20 backdrop-blur-md px-4">
         {/* left */}
         <div
           onClick={() => router.push("/")}
-          className=" my-2  relative w-20 h-20 hidden lg:inline-grid cursor-pointer "
+          className=" my-2 relative md:w-20 md:h-20  hidden lg:inline-grid cursor-pointer "
         >
           <Image
             src="/logo-main-white.svg"
@@ -35,7 +35,7 @@ const Header = () => {
         </div>
         <div
           onClick={() => router.push("/")}
-          className="my-2 relative w-16 h-16 lg:hidden flex-shrink-0 cursor-pointer"
+          className="relative w-12 h-12 lg:hidden flex-shrink-0 cursor-pointer"
         >
           <Image
             src="/logo-mark-white.svg"
@@ -56,7 +56,7 @@ const Header = () => {
                 <p>条件検索</p>
               </div> */}
             <div className="">
-              <div className="relative mt-1 p-3 rounded-md max-w-sm ">
+              <div className="relative lg:p-3 p-1 rounded-md max-w-sm ">
                 <div className="absolute inset-y-0 pl-3 flex items-center">
                   <SearchIcon className="h-5 w-5 text-gray-500" />
                 </div>
@@ -79,7 +79,7 @@ const Header = () => {
           />
           {session ? (
             <>
-          <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" />
+              <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" />
               <BookmarkSolidIcon
                 onClick={() => router.push("/bookmarks")}
                 className="btn h-10 hidden sm:inline-block  text-blue-500"
