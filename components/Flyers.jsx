@@ -16,11 +16,11 @@ const Flyers = () => {
         </section>
       </div>
       <div
-        className={` grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mx-auto ${
+        className={` grid grid-cols-1 md:grid-cols-4 xl:grid-cols-6 mx-auto ${
           !session && "!grid-cols-2"
         }`}
       >
-        <section className="col-span-2 ml-5">
+        <section className="col-span-5 ml-5">
           {/* section */}
           {/* Stories */}
           {/* <Stories/> */}
@@ -29,7 +29,7 @@ const Flyers = () => {
         </section>
 
         {session && (
-          <section className="hidden xl:inline-grid xl:col-span-1">
+          <section className="hidden lg:inline-grid lg:col-span-1">
             {/* MiniProfile */}
             <div className="fixed top-30 mr-5">
               <MiniProfile />

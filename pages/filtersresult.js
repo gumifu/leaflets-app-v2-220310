@@ -36,9 +36,7 @@ const FilteRsresult = () => {
         });
         setPosts(post);
       } else {
-          return (<>
-              {/* <p>結果はありません...</p> */}
-          </>)
+        return <>{/* <p>結果はありません...</p> */}</>;
       }
     };
     getPosts();

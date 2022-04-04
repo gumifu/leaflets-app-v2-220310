@@ -24,7 +24,6 @@ const FilterdCard = ({ placeholder }) => {
 
   return (
     <div className="bg-white p-10 rounded-lg">
-
       <p>■ エリア / カテゴリーを入力</p>
       <div className="flex items-center rounded-md mb-5 py-2 md:shadow-sm border-none">
         <select
@@ -65,7 +64,6 @@ const FilterdCard = ({ placeholder }) => {
           </button>
         </div>
       </div>
-
     </div>
   );
 };

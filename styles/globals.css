@@ -9,11 +9,16 @@
   .bg-main{
     @apply bg-gradient-to-br from-gray-700 to-gray-900 h-screen overflow-y-scroll scrollbar-hide;
   }
+  /* .bg-main{
+    @apply bg-bg h-screen overflow-y-scroll scrollbar-hide;
+  } */
 
   .btn{
     @apply h-7 hover:scale-125 transition-all ease-out cursor-pointer duration-150
   }
+
 }
+
 
 /* html,
 body {
