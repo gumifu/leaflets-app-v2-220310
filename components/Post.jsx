@@ -112,10 +112,10 @@ const Post = ({
     <>
       {/* <p className="text-white">{weather}</p> */}
 
-      <div className="bg-white bg-opacity-10 my-3 mx-2 rounded-lg relative ">
+      <div className="bg-white bg-opacity-10 my-5 mx-2 rounded-lg relative ">
         <div className="flex items-center justify-between px-3">
           <WeatherRef coordinates={coordinates} />
-          <p className="px-5 py-3 ml-3 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
+          <p className="px-0 py-3 md:px-5 rounded-full truncate text-red-400 w-40 md:text-base text-sm text-right">
             {classification} / {prefectures}
             {/* {placeInfo} */}
           </p>
@@ -130,10 +130,9 @@ const Post = ({
         </Nextlink>
         {/* Button */}
         {session && (
-          <div className=" flex items-center justify-between">
-            <div className="">
+          <div className=" flex items-center justify-between  ">
               {hasLiked ? (
-                <div className="flex items-center justify-between px-3">
+                <div className="flex items-center justify-between p-3">
                   <div className="relative btn">
                     <BookmarkSolidIcon
                       onClick={likePost}
@@ -152,7 +151,7 @@ const Post = ({
                   </div>
                 </div>
               ) : (
-                  <div className="flex items-center justify-between md:p-3 p-2">
+                  <div className="flex items-center justify-between p-3">
                     <div className="relative btn">
                       <BookmarkIcon onClick={likePost} className="btn" />
                       <div className="">
@@ -178,7 +177,6 @@ const Post = ({
               </div> */}
               {/* <ChatIcon className="btn" />
             <PaperAirplaneIcon className="btn rotate-45" /> */}
-            </div>
             {/* <BookmarkIcon className="btn" /> */}
           </div>
         )}

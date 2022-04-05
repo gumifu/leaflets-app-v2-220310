@@ -65,7 +65,7 @@ const WeatherRef = ({ coordinates }) => {
       });
   }, []);
 
-  return <div className="text-white md:text-4xl text-2xl">{weather}</div>;
+  return <div className="text-white md:text-4xl text-3xl">{weather}</div>;
 };
 
 export default WeatherRef;
