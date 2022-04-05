@@ -23,13 +23,11 @@ export const Map = ({ coordinates }) => {
         defaultZoom={18}
         onGoogleApiLoaded={handleApiLoaded}
         options={{
-            gestureHandling: 'greedy',
-            streetViewControl: true,
-            fullscreenControl: true,
-          }}
-      >
-
-      </GoogleMapReact>
+          gestureHandling: "greedy",
+          streetViewControl: true,
+          fullscreenControl: true,
+        }}
+      ></GoogleMapReact>
     </div>
   );
 };

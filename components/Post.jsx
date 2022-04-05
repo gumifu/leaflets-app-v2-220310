@@ -112,7 +112,7 @@ const Post = ({
     <>
       {/* <p className="text-white">{weather}</p> */}
 
-      <div className="bg-white bg-opacity-10 my-5 mx-2 rounded-lg relative ">
+      <div className="bg-white bg-opacity-10 md:my-5 my-3 md:mx-2 mx-1 rounded-lg relative ">
         <div className="flex items-center justify-between px-3">
           <WeatherRef coordinates={coordinates} />
           <p className="px-0 py-3 md:px-5 rounded-full truncate text-red-400 w-40 md:text-base text-sm text-right">
@@ -124,58 +124,65 @@ const Post = ({
         <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="bg-gray-100 p-2 cursor-pointer ">
             <div className=" bg-white shadow-lg shadow-gray-800 ">
-              <img src={img} alt="" className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out" />
+              <img
+                src={img}
+                alt=""
+                className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out"
+              />
             </div>
           </div>
         </Nextlink>
         {/* Button */}
         {session && (
           <div className="m-2 py-2 truncate">
-              {hasLiked ? (
-                <div className="flex items-center justify-between">
-                  <div className="relative btn">
-                    <BookmarkSolidIcon
-                      onClick={likePost}
-                      className="btn text-blue-500"
-                    />
-                    <div className="">
-                      {likes.length > 0 && (
-                        <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
-                          {likes.length+10}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                  <div className="md:text-base text-sm text-white w-full pl-5">
-                    <p className=" ">{caption}</p>
+            {hasLiked ? (
+              <div className="flex items-center justify-between">
+                <div className="relative btn">
+                  <BookmarkSolidIcon
+                    onClick={likePost}
+                    className="btn text-blue-500"
+                  />
+                  <div className="">
+                    {likes.length > 0 && (
+                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                        {likes.length + 10}
+                      </p>
+                    )}
                   </div>
                 </div>
-              ) : (
-                  <div className="flex items-center justify-between ">
-                    <div className="relative btn">
-                      <BookmarkIcon onClick={likePost} className="btn" />
-                      <div className="">
-                        {likes.length > 0 && (
-                          <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
-                            {likes.length}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <div className="md:text-base text-sm text-white ">
-                    <p className="pl-5 ">{caption}</p>
+                <div className="md:text-base text-sm text-white w-full pl-5">
+                  <p className=" ">{caption}</p>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center justify-between ">
+                <div className="relative btn">
+                  <BookmarkIcon
+                    onClick={likePost}
+                    className="btn text-gray-300"
+                  />
+                  <div className="">
+                    {likes.length > 0 && (
+                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
+                        {likes.length + 10}
+                      </p>
+                    )}
                   </div>
-                  </div>
-              )}
+                </div>
+                <div className="md:text-base text-sm text-white w-full pl-5">
+                  <p className=" ">{caption}</p>
+                </div>
+              </div>
+            )}
 
-              {/* <div className="relative navBtn">
+            {/* <div className="relative navBtn">
                 <PaperAirplaneIcon className="navBtn rotate-45 text-white animate-pulse" />
 
                 <div className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center animate-pulse text-white">
                   3
                 </div>
               </div> */}
-              {/* <ChatIcon className="btn" />
+            {/* <ChatIcon className="btn" />
             <PaperAirplaneIcon className="btn rotate-45" /> */}
             {/* <BookmarkIcon className="btn" /> */}
           </div>

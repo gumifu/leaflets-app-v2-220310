@@ -12,7 +12,7 @@ import {
 const WeatherRef = ({ coordinates }) => {
   const [weather, setWeather] = useState("");
   const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
-    // console.log(coordinates);
+  // console.log(coordinates);
 
   useEffect(() => {
     axios
@@ -22,34 +22,30 @@ const WeatherRef = ({ coordinates }) => {
         const weatherRes = response.data.daily.weathercode[0];
         if (weatherRes === 0 || weatherRes === 1) {
           // 晴れ
-          return setWeather(<WiDaySunny  />);
-        }
-        else if (weatherRes === 2) {
+          return setWeather(<WiDaySunny />);
+        } else if (weatherRes === 2) {
           //   曇り
-          return setWeather(
-            <WiDaySunnyOvercast  />
-          );
-
-        }
-        else if (weatherRes === 3 || weatherRes === 45) {
+          return setWeather(<WiDaySunnyOvercast />);
+        } else if (weatherRes === 3 || weatherRes === 45) {
           //   曇り
-          return setWeather(
-            <WiCloudy />
-          );
-        }
-        else if (weatherRes === 61 || weatherRes === 63 || weatherRes === 80 || weatherRes === 81) {
+          return setWeather(<WiCloudy />);
+        } else if (
+          weatherRes === 61 ||
+          weatherRes === 63 ||
+          weatherRes === 80 ||
+          weatherRes === 81
+        ) {
           //   小雨
-          return setWeather(<WiRainMix  />);
-        }
-        else if (weatherRes === 65 || weatherRes === 82) {
+          return setWeather(<WiRainMix />);
+        } else if (weatherRes === 65 || weatherRes === 82) {
           //   大雨
-          return setWeather(<WiRain  />);
+          return setWeather(<WiRain />);
         }
-        else {
-          return setWeather(
-            <p className=" text-sm">天気</p>
-          );
-        }
+        // else {
+        //   return setWeather(
+        //     <p className=" text-sm">天気</p>
+        //   );
+        // }
         // setWeather(weatherRes);
         // // return weatherRes;
 

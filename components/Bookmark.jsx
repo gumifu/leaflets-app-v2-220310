@@ -110,12 +110,16 @@ const Bookmark = ({
     <>
       {hasLiked && (
         <>
-          <div className="bg-white my-3 mx-3 border border-black rounded-sm relative ">
+          <div className="bg-white my-5 mx-3 border border-black rounded-sm relative ">
             {/* img */}
             <Nextlink passHref href={`/postdetail/${id}`}>
-              <div className="bg-gray-100 p-10 rounded-3xl">
-                <div className=" bg-white shadow-2xl shadow-gray-900">
-                  <img src={img} alt="" className="object-cover w-full" />
+              <div className="bg-gray-100 p-2 cursor-pointer ">
+                <div className=" bg-white shadow-lg shadow-gray-800 ">
+                  <img
+                    src={img}
+                    alt=""
+                    className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out"
+                  />
                 </div>
               </div>
             </Nextlink>

@@ -8,7 +8,7 @@ export const FilterResultCard = ({ posts }) => {
         <Post
           key={post.id}
           id={post.id}
-                      classification={post.classification}
+          classification={post.classification}
           accountName={post.accountName}
           profileImg={post.profileImg}
           img={post.image}
