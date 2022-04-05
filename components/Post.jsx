@@ -130,9 +130,9 @@ const Post = ({
         </Nextlink>
         {/* Button */}
         {session && (
-          <div className=" flex items-center justify-between  ">
+          <div className="m-2 py-2 truncate">
               {hasLiked ? (
-                <div className="flex items-center justify-between p-3">
+                <div className="flex items-center justify-between">
                   <div className="relative btn">
                     <BookmarkSolidIcon
                       onClick={likePost}
@@ -146,12 +146,12 @@ const Post = ({
                       )}
                     </div>
                   </div>
-                  <div className="md:text-base text-sm text-white w-full">
-                    <p className="pl-5 ">{caption}</p>
+                  <div className="md:text-base text-sm text-white w-full pl-5">
+                    <p className=" ">{caption}</p>
                   </div>
                 </div>
               ) : (
-                  <div className="flex items-center justify-between p-3">
+                  <div className="flex items-center justify-between ">
                     <div className="relative btn">
                       <BookmarkIcon onClick={likePost} className="btn" />
                       <div className="">
@@ -162,9 +162,9 @@ const Post = ({
                         )}
                       </div>
                     </div>
-                    <p className=" md:text-base text-sm text-white truncate ml-5">
-                      <span>{caption}</span>
-                    </p>
+                    <div className="md:text-base text-sm text-white ">
+                    <p className="pl-5 ">{caption}</p>
+                  </div>
                   </div>
               )}
 

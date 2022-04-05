@@ -79,10 +79,10 @@ const Header = () => {
           />
           {session ? (
             <>
-              <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" />
+              {/* <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" /> */}
               <BookmarkSolidIcon
                 onClick={() => router.push("/bookmarks")}
-                className="btn h-10 hidden sm:inline-block  text-blue-500"
+                className="btn md:h-10 h-8 inline-block  text-blue-500"
               />
               <img
                 onClick={signOut}
