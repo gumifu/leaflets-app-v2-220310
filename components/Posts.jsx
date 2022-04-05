@@ -61,6 +61,7 @@ const Posts = () => {
             caption={post.data().caption}
             prefectures={post.data().prefectures}
             placeInfo={post.data().place}
+            coordinates={post.data().coordinates}
             // shopName={ post.data().shopName}
             // shopEmail={ post.data().shopEmail}
             // shopTel={ post.data().shopTel}

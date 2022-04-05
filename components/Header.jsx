@@ -20,7 +20,7 @@ const Header = () => {
   // console.log(session.user.uid);
   return (
     <div className="sticky lg:top-10 top-0 lg:mx-5 z-50 lg:mb-20 mb-5">
-      <div className="flex  items-center justify-between m-w-6xl lg:rounded-full bg-opacity-20 backdrop-blur-md px-4">
+      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black lg:rounded-full bg-opacity-20 backdrop-blur-md px-4">
         {/* left */}
         <div
           onClick={() => router.push("/")}

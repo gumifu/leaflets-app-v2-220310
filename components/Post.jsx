@@ -19,7 +19,11 @@ import { db } from "../firebase";
 import Nextlink from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
+import axios from "axios";
 // import { modalState } from "../atoms/modalAtoms";
+
+
+
 
 const Post = ({
   id,
@@ -33,6 +37,7 @@ const Post = ({
   shopEmail,
   shopTel,
   shopHomepage,
+  coordinates,
 }) => {
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
@@ -40,7 +45,30 @@ const Post = ({
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [bookmark, setBookmark] = useState([]);
+  const [weather, setWeather] = useState('')
   // const [isOpen, setIsOpen] = useRecoilState(modalState);
+  const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
+
+  useEffect(() => {
+
+    axios.get(requestUrl)
+     .then(function (response) {
+       // リクエスト成功時の処理（responseに結果が入っている）
+       const weatherRes = response.data.daily.weathercode[0];
+       setWeather( weatherRes );
+       // return weatherRes;
+
+       console.log(weatherRes);
+     })
+     .catch(function (error) {
+       // リクエスト失敗時の処理（errorにエラー内容が入っている）
+       console.log(error);
+     })
+     .finally(function () {
+       // 成功失敗に関わらず必ず実行
+       console.log("done!");
+     });
+  },[])
 
   // likes
   useEffect(
@@ -103,9 +131,12 @@ const Post = ({
       timestamp: serverTimestamp(),
     });
   };
+
   return (
     <>
-      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-sm relative ">
+      <p className="text-white">{weather}</p>
+
+      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-b-2xl relative ">
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="bg-gray-100 p-2">
@@ -115,6 +146,7 @@ const Post = ({
           </div>
         </Nextlink>
         {/* Button */}
+        <h1>{``}</h1>
         {session && (
           <div className=" flex  justify-between px-4 pt-4 h-300">
             <div className="flex space-x-4 items-center">
