@@ -1,12 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { WiDaySunnyOvercast,WiRainMix,WiDaySunny,WiRain } from "react-icons/wi";
+import {
+  WiDaySunnyOvercast,
+  WiRainMix,
+  WiDaySunny,
+  WiRain,
+} from "react-icons/wi";
 
 const WeatherRef = ({ coordinates }) => {
   const [weather, setWeather] = useState("");
   const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
-  console.log(coordinates.latitude);
+  //   console.log(coordinates.latitude);
 
   useEffect(() => {
     axios
@@ -14,21 +19,20 @@ const WeatherRef = ({ coordinates }) => {
       .then(function (response) {
         // リクエスト成功時の処理（responseに結果が入っている）
         const weatherRes = response.data.daily.weathercode[0];
-          if (weatherRes === 0 || weatherRes === 1) {
-            // 晴れ
-          return setWeather(<WiDaySunny className="text-5xl"/>);
-          }
-          else if (weatherRes === 2 || weatherRes === 3) {
-            //   曇り
-            return setWeather(<WiDaySunnyOvercast className="text-5xl"/>);
-        }
-          else if (weatherRes === 61 || weatherRes === 63) {
-            //   小雨
-            return setWeather(<WiRainMix className="text-5xl"/>);
-        }
-          else if (weatherRes === 65) {
-            //   大雨
-            return setWeather(<WiRain className="text-5xl"/>);
+        if (weatherRes === 0 || weatherRes === 1) {
+          // 晴れ
+          return setWeather(<WiDaySunny  />);
+        } else if (weatherRes === 2 || weatherRes === 3) {
+          //   曇り
+          return setWeather(
+            <WiDaySunnyOvercast  />
+          );
+        } else if (weatherRes === 61 || weatherRes === 63) {
+          //   小雨
+          return setWeather(<WiRainMix  />);
+        } else if (weatherRes === 65) {
+          //   大雨
+          return setWeather(<WiRain  />);
         }
 
         setWeather(weatherRes);
@@ -46,7 +50,7 @@ const WeatherRef = ({ coordinates }) => {
       });
   }, []);
 
-  return <div className="text-white ">{weather}</div>;
+  return <div className="text-white md:text-4xl text-2xl">{weather}</div>;
 };
 
 export default WeatherRef;

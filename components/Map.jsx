@@ -11,6 +11,7 @@ export const Map = ({ coordinates }) => {
     new maps.Marker({
       map,
       position: center,
+      title: "Hello World!",
     });
   };
 

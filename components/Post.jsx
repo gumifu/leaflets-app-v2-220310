@@ -27,6 +27,7 @@ const Post = ({
   id,
   accountName,
   profileImg,
+  classification,
   img,
   caption,
   prefectures,
@@ -42,31 +43,7 @@ const Post = ({
   const [comments, setComments] = useState([]);
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
-  const [bookmark, setBookmark] = useState([]);
-  const [weather, setWeather] = useState("");
   // const [isOpen, setIsOpen] = useRecoilState(modalState);
-  const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
-
-  useEffect(() => {
-    axios
-      .get(requestUrl)
-      .then(function (response) {
-        // リクエスト成功時の処理（responseに結果が入っている）
-        const weatherRes = response.data.daily.weathercode[0];
-        if (weatherRes) setWeather(weatherRes);
-        // return weatherRes;
-
-        console.log(weatherRes);
-      })
-      .catch(function (error) {
-        // リクエスト失敗時の処理（errorにエラー内容が入っている）
-        console.log(error);
-      })
-      .finally(function () {
-        // 成功失敗に関わらず必ず実行
-        console.log("done!");
-      });
-  }, []);
 
   // likes
   useEffect(
@@ -133,49 +110,62 @@ const Post = ({
   return (
     <>
       {/* <p className="text-white">{weather}</p> */}
-      <WeatherRef coordinates={coordinates} />
 
-      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-b-2xl relative ">
+      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-lg relative ">
+        <div className="flex items-center justify-between px-3">
+          <WeatherRef coordinates={coordinates} />
+          <p className="px-5 py-3 ml-3 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
+            {classification} / {prefectures}
+            {/* {placeInfo} */}
+          </p>
+        </div>
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
-          <div className="bg-gray-100 p-2">
-            <div className=" bg-white shadow-lg shadow-gray-800">
+          <div className="bg-gray-100 p-2 cursor-pointer">
+            <div className=" bg-white shadow-lg shadow-gray-800 ">
               <img src={img} alt="" className="object-cover w-full" />
             </div>
           </div>
         </Nextlink>
         {/* Button */}
-        <h1>{``}</h1>
         {session && (
-          <div className=" flex  justify-between px-4 pt-4 h-300">
+          <div className=" flex  justify-between px-3 pt-3 h-300">
             <div className="flex space-x-4 items-center">
               {hasLiked ? (
-                <div className="relative btn">
-                  <BookmarkSolidIcon
-                    onClick={likePost}
-                    className="btn text-blue-500"
-                  />
-                  <div className="">
-                    {likes.length > 0 && (
-                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
-                        {likes.length}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <>
+                <div className="flex items-center justify-between md:p-3 p-2">
                   <div className="relative btn">
-                    <BookmarkIcon onClick={likePost} className="btn" />
+                    <BookmarkSolidIcon
+                      onClick={likePost}
+                      className="btn text-blue-500"
+                    />
                     <div className="">
                       {likes.length > 0 && (
-                        <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
+                        <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
                           {likes.length}
                         </p>
                       )}
                     </div>
                   </div>
-                </>
+                  <p className="md:text-base text-sm text-white truncate ml-5">
+                    <span>{caption}</span>
+                  </p>
+                </div>
+              ) : (
+                  <div className="flex items-center justify-between md:p-3 p-2">
+                    <div className="relative btn">
+                      <BookmarkIcon onClick={likePost} className="btn" />
+                      <div className="">
+                        {likes.length > 0 && (
+                          <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
+                            {likes.length}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <p className=" md:text-base text-sm text-white truncate ml-5">
+                      <span>{caption}</span>
+                    </p>
+                  </div>
               )}
 
               {/* <div className="relative navBtn">
@@ -189,17 +179,10 @@ const Post = ({
             <PaperAirplaneIcon className="btn rotate-45" /> */}
             </div>
             {/* <BookmarkIcon className="btn" /> */}
-            <p className="px-5 py-3 ml-3 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
-              {prefectures}
-              {placeInfo}
-            </p>
           </div>
         )}
 
         {/* caption */}
-        <p className="md:p-5 p-2 md:text-base text-sm text-white truncate">
-          <span>{caption}</span>
-        </p>
       </div>
     </>
   );

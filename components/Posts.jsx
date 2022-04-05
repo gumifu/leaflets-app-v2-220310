@@ -28,6 +28,7 @@ const breakpointColumnsObj = {
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(
     () =>
@@ -55,6 +56,7 @@ const Posts = () => {
           <Post
             key={post.id}
             id={post.id}
+            classification={post.data().classification}
             accountName={post.data().accountName}
             profileImg={post.data().profileImg}
             img={post.data().image}

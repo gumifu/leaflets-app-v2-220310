@@ -125,7 +125,7 @@ const Post = ({ post }) => {
         >
           <p className="">戻る</p>
         </button>
-        <div className="bg-white border border-black rounded-sm relative max-w-7xl mx-auto">
+        <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* img */}
             <div className="bg-gray-100 h-full p-8 rounded-l-3xl md:col-span-1">
