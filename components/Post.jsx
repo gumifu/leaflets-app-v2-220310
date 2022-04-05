@@ -133,7 +133,7 @@ const Post = ({
           <div className=" flex items-center justify-between">
             <div className="">
               {hasLiked ? (
-                <div className="flex items-center justify-between px-3 py-3 truncate">
+                <div className="flex items-center justify-between px-3">
                   <div className="relative btn">
                     <BookmarkSolidIcon
                       onClick={likePost}
@@ -148,7 +148,7 @@ const Post = ({
                     </div>
                   </div>
                   <div className="md:text-base text-sm text-white w-full">
-                    <p className="pl-5">{caption}</p>
+                    <p className="pl-5 ">{caption}</p>
                   </div>
                 </div>
               ) : (
