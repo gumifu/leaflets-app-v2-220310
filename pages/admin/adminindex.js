@@ -14,6 +14,7 @@ import { useSession } from "next-auth/react";
 import { ref, getDownloadURL, uploadString } from "@firebase/storage";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import {Spinner} from "../../components/Spinner"
 
 export default function AdminIndex() {
   const { data: session } = useSession();
@@ -32,9 +33,9 @@ export default function AdminIndex() {
   const [loading, setLoading] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
-  const [selectedFile3, setSelectedFile3] = useState(null);
-  const [selectedFile4, setSelectedFile4] = useState(null);
-  const [selectedFile5, setSelectedFile5] = useState(null);
+  // const [selectedFile3, setSelectedFile3] = useState(null);
+  // const [selectedFile4, setSelectedFile4] = useState(null);
+  // const [selectedFile5, setSelectedFile5] = useState(null);
   const router = useRouter();
 
   // firebase post!!!
@@ -82,7 +83,7 @@ export default function AdminIndex() {
         });
       }
     );
-    const imageRef2 = ref(storage, `posts/${docRef.id}/image`);
+    const imageRef2 = ref(storage, `posts/${docRef.id}/image2`);
 
     await uploadString(imageRef2, selectedFile2, "data_url").then(
       async (snaphot) => {
@@ -313,7 +314,7 @@ export default function AdminIndex() {
                     className="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus-within:ring-2 focus:ring-blue-600 sm:text-sm disabled:bg-gray-300 disabled:cursor-not-allowed  hover:disabled:bg-gray-300"
                     onClick={uploadPost}
                   >
-                    {loading ? "アップロード中..." : "アップロード"}
+                    {loading ? <Spinner/> : "アップロード"}
                   </button>
                 </div>
               </div>

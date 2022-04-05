@@ -6,12 +6,13 @@ import {
   WiRainMix,
   WiDaySunny,
   WiRain,
+  WiCloudy,
 } from "react-icons/wi";
 
 const WeatherRef = ({ coordinates }) => {
   const [weather, setWeather] = useState("");
   const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
-  //   console.log(coordinates.latitude);
+    // console.log(coordinates);
 
   useEffect(() => {
     axios
@@ -22,23 +23,37 @@ const WeatherRef = ({ coordinates }) => {
         if (weatherRes === 0 || weatherRes === 1) {
           // 晴れ
           return setWeather(<WiDaySunny  />);
-        } else if (weatherRes === 2 || weatherRes === 3) {
+        }
+        else if (weatherRes === 2) {
           //   曇り
           return setWeather(
             <WiDaySunnyOvercast  />
           );
-        } else if (weatherRes === 61 || weatherRes === 63) {
+
+        }
+        else if (weatherRes === 3 || weatherRes === 45) {
+          //   曇り
+          return setWeather(
+            <WiCloudy />
+          );
+        }
+        else if (weatherRes === 61 || weatherRes === 63 || weatherRes === 80 || weatherRes === 81) {
           //   小雨
           return setWeather(<WiRainMix  />);
-        } else if (weatherRes === 65) {
+        }
+        else if (weatherRes === 65 || weatherRes === 82) {
           //   大雨
           return setWeather(<WiRain  />);
         }
+        else {
+          return setWeather(
+            <p className=" text-sm">天気</p>
+          );
+        }
+        // setWeather(weatherRes);
+        // // return weatherRes;
 
-        setWeather(weatherRes);
-        // return weatherRes;
-
-        console.log(weatherRes);
+        // console.log(weatherRes);
       })
       .catch(function (error) {
         // リクエスト失敗時の処理（errorにエラー内容が入っている）

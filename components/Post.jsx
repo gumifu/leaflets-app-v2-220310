@@ -29,6 +29,7 @@ const Post = ({
   profileImg,
   classification,
   img,
+  subimg,
   caption,
   prefectures,
   placeInfo,
@@ -111,7 +112,7 @@ const Post = ({
     <>
       {/* <p className="text-white">{weather}</p> */}
 
-      <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-lg relative ">
+      <div className="bg-white bg-opacity-10 my-3 mx-2 rounded-lg relative ">
         <div className="flex items-center justify-between px-3">
           <WeatherRef coordinates={coordinates} />
           <p className="px-5 py-3 ml-3 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
@@ -121,18 +122,18 @@ const Post = ({
         </div>
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
-          <div className="bg-gray-100 p-2 cursor-pointer">
+          <div className="bg-gray-100 p-2 cursor-pointer ">
             <div className=" bg-white shadow-lg shadow-gray-800 ">
-              <img src={img} alt="" className="object-cover w-full" />
+              <img src={img} alt="" className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out" />
             </div>
           </div>
         </Nextlink>
         {/* Button */}
         {session && (
-          <div className=" flex  justify-between px-3 pt-3 h-300">
-            <div className="flex space-x-4 items-center">
+          <div className=" flex items-center justify-between">
+            <div className="">
               {hasLiked ? (
-                <div className="flex items-center justify-between md:p-3 p-2">
+                <div className="flex items-center justify-between px-3 py-3 truncate">
                   <div className="relative btn">
                     <BookmarkSolidIcon
                       onClick={likePost}
@@ -141,14 +142,14 @@ const Post = ({
                     <div className="">
                       {likes.length > 0 && (
                         <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
-                          {likes.length}
+                          {likes.length+10}
                         </p>
                       )}
                     </div>
                   </div>
-                  <p className="md:text-base text-sm text-white truncate ml-5">
-                    <span>{caption}</span>
-                  </p>
+                  <div className="md:text-base text-sm text-white w-full">
+                    <p className="pl-5">{caption}</p>
+                  </div>
                 </div>
               ) : (
                   <div className="flex items-center justify-between md:p-3 p-2">

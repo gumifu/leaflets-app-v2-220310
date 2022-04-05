@@ -60,6 +60,7 @@ const Posts = () => {
             accountName={post.data().accountName}
             profileImg={post.data().profileImg}
             img={post.data().image}
+            subimg={post.data().image2}
             caption={post.data().caption}
             prefectures={post.data().prefectures}
             placeInfo={post.data().place}
