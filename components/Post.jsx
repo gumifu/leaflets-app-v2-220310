@@ -20,10 +20,8 @@ import Nextlink from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
 import axios from "axios";
+import WeatherRef from "./WeatherRef";
 // import { modalState } from "../atoms/modalAtoms";
-
-
-
 
 const Post = ({
   id,
@@ -45,30 +43,30 @@ const Post = ({
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [bookmark, setBookmark] = useState([]);
-  const [weather, setWeather] = useState('')
+  const [weather, setWeather] = useState("");
   // const [isOpen, setIsOpen] = useRecoilState(modalState);
   const requestUrl = `https://api.open-meteo.com/v1/forecast?latitude=${coordinates.latitude}&longitude=${coordinates.longitude}&daily=weathercode&timezone=Asia%2FTokyo`;
 
   useEffect(() => {
+    axios
+      .get(requestUrl)
+      .then(function (response) {
+        // リクエスト成功時の処理（responseに結果が入っている）
+        const weatherRes = response.data.daily.weathercode[0];
+        if (weatherRes) setWeather(weatherRes);
+        // return weatherRes;
 
-    axios.get(requestUrl)
-     .then(function (response) {
-       // リクエスト成功時の処理（responseに結果が入っている）
-       const weatherRes = response.data.daily.weathercode[0];
-       setWeather( weatherRes );
-       // return weatherRes;
-
-       console.log(weatherRes);
-     })
-     .catch(function (error) {
-       // リクエスト失敗時の処理（errorにエラー内容が入っている）
-       console.log(error);
-     })
-     .finally(function () {
-       // 成功失敗に関わらず必ず実行
-       console.log("done!");
-     });
-  },[])
+        console.log(weatherRes);
+      })
+      .catch(function (error) {
+        // リクエスト失敗時の処理（errorにエラー内容が入っている）
+        console.log(error);
+      })
+      .finally(function () {
+        // 成功失敗に関わらず必ず実行
+        console.log("done!");
+      });
+  }, []);
 
   // likes
   useEffect(
@@ -134,7 +132,8 @@ const Post = ({
 
   return (
     <>
-      <p className="text-white">{weather}</p>
+      {/* <p className="text-white">{weather}</p> */}
+      <WeatherRef coordinates={coordinates} />
 
       <div className="bg-white bg-opacity-10 my-3 mx-3 rounded-b-2xl relative ">
         {/* img */}

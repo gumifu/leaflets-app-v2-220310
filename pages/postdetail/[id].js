@@ -119,7 +119,7 @@ const Post = ({ post }) => {
       <Header />
       <div className="mb:m-16 m-8 max-w-7xl mx-auto">
         <button
-          className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl"
+          className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
           type="button"
           onClick={() => router.back()}
         >
