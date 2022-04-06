@@ -1,7 +1,10 @@
 import { useSession } from "next-auth/react";
 import React from "react";
+import { Hits } from "react-instantsearch-dom";
 import FilterdCard from "./FilterCard";
+import { Hit } from "./Hit";
 import MiniProfile from "./MiniProfile";
+import Post from "./Post";
 import Posts from "./Posts";
 import Stories from "./Stories";
 import Suggestions from "./Suggestions";
@@ -19,6 +22,7 @@ const Flyers = () => {
           <div className="max-w-7xl mx-auto md:mb-5 mb-2  md:px-16 ">
             <FilterdCard />
           </div>
+
           {/* section */}
           {/* Stories */}
           {/* <Stories/> */}

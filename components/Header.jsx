@@ -13,6 +13,9 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import Nextlink from "next/link";
+import { Hit } from "./Hit";
+import { Hits } from "react-instantsearch-dom";
+import { SearchBox } from "react-instantsearch-dom";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -20,7 +23,7 @@ const Header = () => {
   // console.log(session.user.uid);
   return (
     <div className="sticky md:top-10 top-0 md:mx-5 z-50 md:mb-20 mb-5">
-      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black lg:rounded-full bg-opacity-20 backdrop-blur-md px-4">
+      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black md:rounded-full bg-opacity-20 backdrop-blur-md px-4">
         {/* left */}
         <div
           onClick={() => router.push("/")}

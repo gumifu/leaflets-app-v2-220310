@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Post from "./Post";
 import Masonry from "react-masonry-css";
+import { Hit } from "./Hit";
+import { Hits } from "react-instantsearch-dom";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -28,7 +30,6 @@ const breakpointColumnsObj = {
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(
     () =>
@@ -52,25 +53,29 @@ const Posts = () => {
         breakpointCols={breakpointColumnsObj}
       >
         {/* Post */}
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            classification={post.data().classification}
-            accountName={post.data().accountName}
-            profileImg={post.data().profileImg}
-            img={post.data().image}
-            subimg={post.data().image2}
-            caption={post.data().caption}
-            prefectures={post.data().prefectures}
-            placeInfo={post.data().place}
-            coordinates={post.data().coordinates}
-            // shopName={ post.data().shopName}
-            // shopEmail={ post.data().shopEmail}
-            // shopTel={ post.data().shopTel}
-            // shopHomepage={ post.data().shopHomepage}
-          />
-        ))}
+          {/* <Hits hitComponent={ Hit }/> */}
+          {
+            posts.map((post) => (
+              <Post
+                key={post.id}
+                id={post.id}
+                classification={post.data().classification}
+                accountName={post.data().accountName}
+                profileImg={post.data().profileImg}
+                img={post.data().image}
+                subimg={post.data().image2}
+                caption={post.data().caption}
+                prefectures={post.data().prefectures}
+                placeInfo={post.data().place}
+                coordinates={post.data().coordinates}
+              // shopName={ post.data().shopName}
+              // shopEmail={ post.data().shopEmail}
+              // shopTel={ post.data().shopTel}
+              // shopHomepage={ post.data().shopHomepage}
+              />
+            ))
+          }
+
       </Masonry>
     </>
   );
