@@ -6,11 +6,6 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtoms";
-import { Hit } from "./Hit";
-import { Hits } from "react-instantsearch-dom";
-import { SearchBox } from "react-instantsearch-dom";
-
-
 
 const Header = () => {
   const { data: session } = useSession();
@@ -63,7 +58,7 @@ const Header = () => {
                   className=" md:h-14 h-10 bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
                   type="text"
                   placeholder="検索"
-                  onFocus={()=>setOpen(true)}
+                  onClick={() => setOpen(true)}
                 />
               </div>
               {/* <PlusCircleIcon onClick={()=>setOpen(true)} className='navBtn'/> */}

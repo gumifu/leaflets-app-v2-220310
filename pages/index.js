@@ -5,8 +5,6 @@ import algoliasearch from "algoliasearch/lite";
 import { InstantSearch } from "react-instantsearch-dom";
 import Modal from "../components/Modal";
 
-
-
 export default function Home() {
   return (
     <div className="bg-main">

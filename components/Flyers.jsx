@@ -34,7 +34,7 @@ const Flyers = () => {
             <div className="fixed top-32 mr-5">
               <MiniProfile />
               {/* <div className="max-w-7xl mx-auto md:my-5 my-2 p-5"> */}
-                {/* <FilterdCard /> */}
+              {/* <FilterdCard /> */}
               {/* </div> */}
               {/* Suggestion */}
               <Suggestions />

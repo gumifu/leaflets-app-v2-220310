@@ -19,7 +19,6 @@ import { db } from "../firebase";
 import Nextlink from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
-// import { modalState } from "../atoms/modalAtoms";
 
 const Bookmark = ({
   id,
@@ -40,7 +39,6 @@ const Bookmark = ({
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [bookmark, setBookmark] = useState([]);
-  // const [isOpen, setIsOpen] = useRecoilState(modalState);
 
   // likes
   useEffect(
