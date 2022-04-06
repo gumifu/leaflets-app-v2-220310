@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 import { db } from "../firebase";
 import Post from "./Post";
 import Masonry from "react-masonry-css";
-import { Hit } from "./Hit";
+import { LoadingImage } from "./LoadingImage";
 import { Hits } from "react-instantsearch-dom";
+import { Spinner } from "./Spinner";
 
 const breakpointColumnsObj = {
   default: 4,
@@ -30,39 +31,19 @@ const breakpointColumnsObj = {
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  useEffect(
-    () =>
-      onSnapshot(
-        query(collection(db, "posts"), orderBy("timestamp", "desc")),
-        (snapshot) => {
-          setPosts(snapshot.docs);
-        }
-      ),
-    [db]
-  );
+  useEffect(() => {
+    onSnapshot(
+      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      (snapshot) => {
+        setPosts(snapshot.docs);
+      }
+    );
+  }, [db]);
   // const hoge = posts.map((post) => {
   //     console.log(post.id);
   // })
-  const AllResults = posts.map((post) => {
-    <Post
-      key={post.id}
-      id={post.id}
-      classification={post.data().classification}
-      accountName={post.data().accountName}
-      profileImg={post.data().profileImg}
-      img={post.data().image}
-      subimg={post.data().image2}
-      caption={post.data().caption}
-      prefectures={post.data().prefectures}
-      placeInfo={post.data().place}
-      coordinates={post.data().coordinates}
-      // shopName={ post.data().shopName}
-      // shopEmail={ post.data().shopEmail}
-      // shopTel={ post.data().shopTel}
-      // shopHomepage={ post.data().shopHomepage}
-    />;
-  });
 
   return (
     <>
@@ -73,25 +54,28 @@ const Posts = () => {
       >
         {/* Post */}
         {/* <Hits hitComponent={Hit} /> */}
-        {posts.map((post) => (
-          <Post
-            key={post.id}
-            id={post.id}
-            classification={post.data().classification}
-            accountName={post.data().accountName}
-            profileImg={post.data().profileImg}
-            img={post.data().image}
-            subimg={post.data().image2}
-            caption={post.data().caption}
-            prefectures={post.data().prefectures}
-            placeInfo={post.data().place}
-            coordinates={post.data().coordinates}
+        {
+          posts.map((post) =>
+            <Post
+              key={post.id}
+              id={post.id}
+              classification={post.data().classification}
+              accountName={post.data().accountName}
+              profileImg={post.data().profileImg}
+              img={post.data().image}
+              subimg={post.data().image2}
+              caption={post.data().caption}
+              prefectures={post.data().prefectures}
+              placeInfo={post.data().place}
+              coordinates={post.data().coordinates}
+
             // shopName={ post.data().shopName}
             // shopEmail={ post.data().shopEmail}
             // shopTel={ post.data().shopTel}
             // shopHomepage={ post.data().shopHomepage}
-          />
-        ))}
+            />
+          )
+        }
       </Masonry>
     </>
   );

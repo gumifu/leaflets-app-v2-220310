@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { Spinner } from "../components/Spinner";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+
   const router = useRouter();
   const [pageLoading, setPageLoading] = useState(false);
+
 
   useEffect(() => {
     const handleStart = (url) => url !== router.asPath && setPageLoading(true);
@@ -22,7 +24,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       router.events.off("routeChangeComplete", handleComplete);
       router.events.off("routeChangeError", handleComplete);
     };
-  });
+  },);
 
   // TODO 正式なローディングコンポーネントにする
   const loadingComponent = <Spinner />;

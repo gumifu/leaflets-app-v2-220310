@@ -118,6 +118,8 @@ const Post = ({ post }) => {
   return (
     <div className="bg-main">
       <Header />
+
+      <div className="mb:m-16 m-8 max-w-7xl mx-auto">
       <button
         className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
         type="button"
@@ -125,8 +127,6 @@ const Post = ({ post }) => {
       >
         <p className="">戻る</p>
       </button>
-
-      <div className="mb:m-16 m-8 max-w-7xl mx-auto">
         <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* img */}

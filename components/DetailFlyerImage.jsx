@@ -16,7 +16,7 @@ const DetailFlyerImage = ({ id, img, subimg }) => {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={30}
+        spaceBetween={50}
         loop={subimg ? true : false}
         pagination={{
           clickable: true,
@@ -27,7 +27,7 @@ const DetailFlyerImage = ({ id, img, subimg }) => {
       >
         <SwiperSlide>
           <div className=" bg-white shadow-2xl shadow-gray-900">
-            <img src={img} alt="" className="object-cover w-full" />
+            <img src={img} alt="" className="object-cover " />
           </div>
         </SwiperSlide>
         {subimg && (
