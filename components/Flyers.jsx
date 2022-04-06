@@ -1,8 +1,6 @@
 import { useSession } from "next-auth/react";
 import React from "react";
-import { Hits } from "react-instantsearch-dom";
 import FilterdCard from "./FilterCard";
-import { Hit } from "./Hit";
 import MiniProfile from "./MiniProfile";
 import Post from "./Post";
 import Posts from "./Posts";
@@ -35,6 +33,9 @@ const Flyers = () => {
             {/* MiniProfile */}
             <div className="fixed top-32 mr-5">
               <MiniProfile />
+              {/* <div className="max-w-7xl mx-auto md:my-5 my-2 p-5"> */}
+                {/* <FilterdCard /> */}
+              {/* </div> */}
               {/* Suggestion */}
               <Suggestions />
             </div>

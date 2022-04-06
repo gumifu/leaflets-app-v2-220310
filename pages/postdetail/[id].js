@@ -118,22 +118,24 @@ const Post = ({ post }) => {
   return (
     <div className="bg-main">
       <Header />
-              <button
-          className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
-          type="button"
-          onClick={() => router.back()}
-        >
-          <p className="">戻る</p>
-        </button>
+      <button
+        className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
+        type="button"
+        onClick={() => router.back()}
+      >
+        <p className="">戻る</p>
+      </button>
 
       <div className="mb:m-16 m-8 max-w-7xl mx-auto">
-
-
         <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* img */}
             <div className="bg-gray-100 h-full p-8 rounded-l-3xl md:col-span-1">
-        <DetailFlyerImage key={id} img={post.image} subimg={post.image2} />
+              <DetailFlyerImage
+                key={id}
+                img={post.image}
+                subimg={post.image2}
+              />
             </div>
             <div className=" md:col-span-1">
               {/* Button */}
@@ -246,7 +248,6 @@ const Post = ({ post }) => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

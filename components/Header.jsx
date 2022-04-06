@@ -1,25 +1,21 @@
 import Image from "next/image";
-import {
-  SearchIcon,
-  PlusCircleIcon,
-  UserGroupIcon,
-  HeartIcon,
-  PaperAirplaneIcon,
-  MenuIcon,
-} from "@heroicons/react/outline";
+import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
 import { HomeIcon } from "@heroicons/react/solid";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
-import Nextlink from "next/link";
+import { modalState } from "../atoms/modalAtoms";
 import { Hit } from "./Hit";
 import { Hits } from "react-instantsearch-dom";
 import { SearchBox } from "react-instantsearch-dom";
 
+
+
 const Header = () => {
   const { data: session } = useSession();
   const router = useRouter();
+  const [open, setOpen] = useRecoilState(modalState);
   // console.log(session.user.uid);
   return (
     <div className="sticky md:top-10 top-0 md:mx-5 z-50 md:mb-20 mb-5">
@@ -67,8 +63,10 @@ const Header = () => {
                   className=" md:h-14 h-10 bg-gray-50 block w-full pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
                   type="text"
                   placeholder="検索"
+                  onFocus={()=>setOpen(true)}
                 />
               </div>
+              {/* <PlusCircleIcon onClick={()=>setOpen(true)} className='navBtn'/> */}
               {/* </div> */}
             </div>
           </div>

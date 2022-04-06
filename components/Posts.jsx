@@ -44,6 +44,25 @@ const Posts = () => {
   // const hoge = posts.map((post) => {
   //     console.log(post.id);
   // })
+  const AllResults = posts.map((post) => {
+    <Post
+      key={post.id}
+      id={post.id}
+      classification={post.data().classification}
+      accountName={post.data().accountName}
+      profileImg={post.data().profileImg}
+      img={post.data().image}
+      subimg={post.data().image2}
+      caption={post.data().caption}
+      prefectures={post.data().prefectures}
+      placeInfo={post.data().place}
+      coordinates={post.data().coordinates}
+      // shopName={ post.data().shopName}
+      // shopEmail={ post.data().shopEmail}
+      // shopTel={ post.data().shopTel}
+      // shopHomepage={ post.data().shopHomepage}
+    />;
+  });
 
   return (
     <>
@@ -53,29 +72,26 @@ const Posts = () => {
         breakpointCols={breakpointColumnsObj}
       >
         {/* Post */}
-          {/* <Hits hitComponent={ Hit }/> */}
-          {
-            posts.map((post) => (
-              <Post
-                key={post.id}
-                id={post.id}
-                classification={post.data().classification}
-                accountName={post.data().accountName}
-                profileImg={post.data().profileImg}
-                img={post.data().image}
-                subimg={post.data().image2}
-                caption={post.data().caption}
-                prefectures={post.data().prefectures}
-                placeInfo={post.data().place}
-                coordinates={post.data().coordinates}
-              // shopName={ post.data().shopName}
-              // shopEmail={ post.data().shopEmail}
-              // shopTel={ post.data().shopTel}
-              // shopHomepage={ post.data().shopHomepage}
-              />
-            ))
-          }
-
+        {/* <Hits hitComponent={Hit} /> */}
+        {posts.map((post) => (
+          <Post
+            key={post.id}
+            id={post.id}
+            classification={post.data().classification}
+            accountName={post.data().accountName}
+            profileImg={post.data().profileImg}
+            img={post.data().image}
+            subimg={post.data().image2}
+            caption={post.data().caption}
+            prefectures={post.data().prefectures}
+            placeInfo={post.data().place}
+            coordinates={post.data().coordinates}
+            // shopName={ post.data().shopName}
+            // shopEmail={ post.data().shopEmail}
+            // shopTel={ post.data().shopTel}
+            // shopHomepage={ post.data().shopHomepage}
+          />
+        ))}
       </Masonry>
     </>
   );
