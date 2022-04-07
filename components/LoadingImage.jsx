@@ -12,7 +12,7 @@ const LoadingImage = () => {
               <div className="h-2 bg-slate-200 rounded col-span-2"></div>
               <div className="h-2 bg-slate-200 rounded col-span-1"></div>
             </div>
-            <div class="h-2 bg-slate-200 rounded"></div>
+            <div className="h-2 bg-slate-200 rounded"></div>
           </div>
         </div>
       </div>
