@@ -3,7 +3,9 @@ module.exports = {
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
     "./src/**/*.{js,ts,jsx,tsx}",
-  ],    theme: {
+  ],
+  darkMode: 'class', //ダークモードを有効化(ON/OFFの切り替え)
+  theme: {
     extend: {
       // width: {
       //   150: "150px",

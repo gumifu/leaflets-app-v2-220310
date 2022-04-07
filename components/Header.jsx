@@ -6,6 +6,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtoms";
+import { HeaderTest } from "./HeaderTest";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -84,11 +85,13 @@ const Header = () => {
                 alt="profile pic"
                 className="hidden sm:inline-block h-10 w-10 object-cover rounded-full cursor-pointer"
               />
+              <HeaderTest/>
             </>
           ) : (
             <button className="text-blue-400 text-lg pr-8" onClick={signIn}>
               サインイン
-            </button>
+              </button>
+
           )}
         </div>
       </div>

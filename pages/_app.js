@@ -4,6 +4,7 @@ import { RecoilRoot } from "recoil";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Spinner } from "../components/Spinner";
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   const router = useRouter();
@@ -31,9 +32,11 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
     <>
       {pageLoading && loadingComponent}
       <SessionProvider session={session}>
+        <ThemeProvider attribute="class" defaultTheme="light">
         <RecoilRoot>
           <Component {...pageProps} />
         </RecoilRoot>
+        </ThemeProvider>
       </SessionProvider>
     </>
   );
