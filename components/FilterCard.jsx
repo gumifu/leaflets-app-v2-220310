@@ -1,6 +1,7 @@
 import { CashIcon } from "@heroicons/react/solid";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const FilterdCard = ({ placeholder }) => {
   const [prefecRefInput, setPrefecRefInput] = useState("");
@@ -23,8 +24,30 @@ const FilterdCard = ({ placeholder }) => {
   };
 
   return (
-    <div className="bg-white lg:p-10 md:p-8 p-4 rounded-lg">
-      <p>■ エリア / カテゴリーを入力</p>
+    <div className="">
+
+      <div className="grid grid-cols-3 items-center justify-center border-2 border-gray-500 bg-opacity-40 bg-gray-900  rounded-lg w-full">
+
+        <div className=" col-span-1 mx-auto">
+          {/* <div className="absolute ">
+            <img src="/copy-image.png"
+              layout="fill"
+            objectFit="contain"
+            className=" w-40 hidden md:inline-block"
+            />
+          </div> */}
+
+          <div className="bg-[url('/copy-image.png')] bg-opacity-75">
+
+          <img src="/copy.png"
+            layout="fill"
+          objectFit="contain"
+          className="w-64 hidden md:inline-block z-10"
+          />
+          </div>
+        </div>
+        <div className=" col-span-3 md:col-span-2 md:mr-5 m-3">
+      <p className=" text-white">■ エリア / カテゴリーを入力</p>
       <div className="flex items-center rounded-md lg:mb-5 mb-1 py-2 md:shadow-sm border-none">
         <select
           value={prefecRefInput}
@@ -42,7 +65,7 @@ const FilterdCard = ({ placeholder }) => {
         <input
           value={classificationRefInput}
           onChange={(e) => setClassificationRefInput(e.target.value)}
-          className="flex-grow md:pl-5 bg-transparent w-full text-sm text-gray-900 rounded-lg lg:h-14 h-10"
+          className="flex-grow md:pl-5 bg-transparent w-full text-sm text-gray-900 rounded-lg lg:h-14 h-10 bg-gray-50 "
           type="text"
           placeholder={placeholder || "例：カフェ"}
         />
@@ -64,6 +87,8 @@ const FilterdCard = ({ placeholder }) => {
           </button>
         </div>
       </div>
+    </div>
+        </div>
     </div>
   );
 };

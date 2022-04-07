@@ -240,6 +240,7 @@ const Post = ({ post }) => {
               <Map coordinates={post.coordinates} />
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}`}
+
                 className=" cursor-pointer p-5 w-full bg-slate-400"
               >
                 Google map

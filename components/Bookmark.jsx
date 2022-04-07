@@ -123,9 +123,9 @@ const Bookmark = ({
             </Nextlink>
             {/* Button */}
             {session && (
-              <div className=" flex  justify-between px-4 pt-4 h-300">
+              <div className="px-4 pt-4 h-300">
                 <div className="flex space-x-4 items-center">
-                  {hasLiked ? (
+                  {/* {hasLiked ? (
                     <div className="relative navBtn">
                       <BookmarkSolidIcon
                         onClick={likePost}
@@ -141,10 +141,10 @@ const Bookmark = ({
                     </div>
                   ) : (
                     <BookmarkIcon onClick={likePost} className="btn" />
-                  )}
+                  )} */}
                 </div>
                 {/* <BookmarkIcon className="btn" /> */}
-                <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-right">
+                <p className="text-sm md:text-xl px-5 py-3 mr-5 md:px-0 rounded-full text-red-400 text-right">
                   {prefectures}
                   {placeInfo}
                 </p>
@@ -152,9 +152,9 @@ const Bookmark = ({
             )}
 
             {/* caption */}
-            <p className="px-10 py-5 truncate font-bold">
+            {/* <p className="px-10 py-5 truncate font-bold">
               <span>{caption}</span>
-            </p>
+            </p> */}
           </div>
         </>
       )}

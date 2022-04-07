@@ -7,8 +7,11 @@
     @apply hidden h-6 md:inline-flex cursor-pointer hover:scale-125 transition-all ease-out;
   }
   .bg-main{
-    @apply bg-gradient-to-br from-gray-700 to-gray-900 h-screen overflow-y-scroll scrollbar-hide;
+    @apply bg-gray-800 h-screen overflow-y-scroll scrollbar-hide;
   }
+  /* .bg-main{
+    @apply bg-gradient-to-br from-gray-700 to-gray-900 h-screen overflow-y-scroll scrollbar-hide;
+  } */
   /* .bg-main{
     @apply bg-bg h-screen overflow-y-scroll scrollbar-hide;
   } */

@@ -17,7 +17,7 @@ const Flyers = () => {
         }`}
       >
         <section className="col-span-5 mx-3">
-          <div className="max-w-7xl mx-auto md:mb-5 mb-2  md:px-16 ">
+          <div className=" mx-auto md:mb-5 mb-2  px-2">
             <FilterdCard />
           </div>
 

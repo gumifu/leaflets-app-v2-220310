@@ -4,7 +4,7 @@ export const Spinner = ({ message }) => {
   return (
     // <div className="flex flex-col justify-center items-center w-full h-full">
     <div className="fixed top-0 left-0 z-50 w-screen h-screen flex items-center justify-center bg-main opacity-90">
-      <Loader.Puff
+      <Loader.Grid
         // type="Puff"
         color="#00BFFF"
         // height={100}
