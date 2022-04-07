@@ -117,8 +117,6 @@ const Post = ({
 
   return (
     <>
-      {/* <p className="text-white">{weather}</p> */}
-
       <div className="bg-white bg-opacity-10 md:my-5 my-3 md:mx-2 mx-1 rounded-lg relative ">
         <div className="flex items-center justify-between px-3">
           <WeatherRef coordinates={coordinates} />
