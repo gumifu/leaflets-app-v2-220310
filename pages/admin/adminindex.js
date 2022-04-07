@@ -135,7 +135,7 @@ export default function AdminIndex() {
                   src="/logo-main-white.svg"
                   layout="fill"
                   className=""
-                  objectFit="contain"
+                  // objectFit="contain"
                 />
               </div>
               <h1 className=" text-white text-2xl italic">Upload Page</h1>

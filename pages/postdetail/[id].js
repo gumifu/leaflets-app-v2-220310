@@ -1,9 +1,6 @@
 import {
   BookmarkIcon,
-  ChatIcon,
-  DotsHorizontalIcon,
   EmojiHappyIcon,
-  HeartIcon,
   PaperAirplaneIcon,
 } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";

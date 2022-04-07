@@ -24,7 +24,7 @@ const Header = () => {
             src="/logo-main-white.svg"
             layout="fill"
             className=""
-            objectFit="contain"
+            // objectFit="contain"
           />
         </div>
         <div

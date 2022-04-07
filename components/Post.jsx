@@ -24,8 +24,9 @@ import WeatherRef from "./WeatherRef";
 import LoadingImage from "./LoadingImage";
 import Image from "next/image";
 // import { modalState } from "../atoms/modalAtoms";
-import { BiCategoryAlt,BiLocationPlus } from "react-icons/bi";
+import { BiCategoryAlt, BiLocationPlus } from "react-icons/bi";
 import { MdOutlineCategory } from "react-icons/md";
+import { FiExternalLink } from "react-icons/fi";
 
 const Post = ({
   id,
@@ -120,15 +121,15 @@ const Post = ({
       <div className="bg-white bg-opacity-10 md:my-5 my-3 md:mx-2 mx-1 rounded-lg relative ">
         <div className="flex items-center justify-between px-3">
           <WeatherRef coordinates={coordinates} />
-          <div className="px-1 py-3 rounded-full text-red-400 md:text-base text-sm text-right">
+          <div className="px-1 py-2 rounded-full text-red-400 md:text-base text-sm text-right">
             <div className="flex items-center">
               <div className="flex items-center">
-                <MdOutlineCategory  className="hidden md:inline-block"/>
-                <p className="">{classification}/</p>
+                {/* <MdOutlineCategory className="hidden md:inline-block" /> */}
+                <p className="">{classification}</p>
               </div>
               <div className="flex items-center ml-2">
-                <BiLocationPlus className="hidden md:inline-block"/>
-                <p className="">{prefectures}</p>
+                /{/* <BiLocationPlus className="hidden md:inline-block" /> */}
+                <p className="ml-2">{prefectures}</p>
               </div>
             </div>
             {/* {placeInfo} */}
@@ -143,8 +144,7 @@ const Post = ({
                 alt=""
                 className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out "
                 layout="responsive"
-                objectFit="fill"
-                onLoadingComplete={loadImage}
+                // objectFit="fill"
               />
             </div>
           </div>
@@ -160,16 +160,41 @@ const Post = ({
                     className="btn text-blue-500"
                   />
                   <div className="">
-                    {likes.length > 0 && (
-                      <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
-                        {likes.length + 10}
+                    {/* {likes.length > 0 && (
+											<p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                        {likes.length + 100}
                       </p>
-                    )}
+                    )} */}
+                    {(() => {
+                      if (likes.length > 0 && likes.length < 100) {
+                        return (
+                          <p className=" absolute -top-2 -right-1 text-xs w-5 h-5 bg-red-500 rounded-full flex justify-center items-center text-white">
+                            {likes.length}
+                          </p>
+                        );
+                      } else if (likes.length >= 100) {
+                        return (
+                          <p className=" absolute -top-3 -right-2 text-xs w-6 h-6 bg-red-500 rounded-full flex justify-center items-center text-white">
+                            {likes.length}
+                          </p>
+                        );
+                      }
+                    })()}
                   </div>
                 </div>
-                <div className="md:text-base text-sm text-white w-full pl-5">
+                {/* <div className="md:text-base text-sm text-white w-full pl-5">
                   <p className=" ">{caption}</p>
-                </div>
+                </div> */}
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${classification}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
+                >
+                  {" "}
+                  <img src="/maps-type.svg" className="h-5" />
+                  <FiExternalLink className="text-lg text-white ml-2" />
+                </a>
               </div>
             ) : (
               <div className="flex items-center justify-between ">
@@ -186,9 +211,19 @@ const Post = ({
                     )}
                   </div>
                 </div>
-                <div className="md:text-base text-sm text-white w-full pl-5">
+
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${classification}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
+                >
+                  <img src="/maps-type.svg" className="h-5" />
+                  <FiExternalLink className="text-lg text-white ml-2" />
+                </a>
+                {/* <div className="md:text-base text-sm text-white w-full pl-5">
                   <p className=" ">{caption}</p>
-                </div>
+                </div> */}
               </div>
             )}
           </div>

@@ -40,7 +40,7 @@ const FilterdCard = ({ placeholder }) => {
             <img
               src="/copy.png"
               layout="fill"
-              objectFit="contain"
+              // objectFit="contain"
               className=" w-72 hidden md:inline-block z-10"
             />
           </div>
