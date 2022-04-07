@@ -28,6 +28,7 @@ import { Map } from "../../components/Map";
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import DetailFlyerImage from "../../components/DetailFlyerImage";
+import Recomends from "../../components/Recomends";
 
 const Post = ({ post }) => {
   const router = useRouter();
@@ -120,13 +121,13 @@ const Post = ({ post }) => {
       <Header />
 
       <div className="mb:m-16 m-8 max-w-7xl mx-auto">
-      <button
-        className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
-        type="button"
-        onClick={() => router.back()}
-      >
-        <p className="">戻る</p>
-      </button>
+        <button
+          className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
+          type="button"
+          onClick={() => router.back()}
+        >
+          <p className="">戻る</p>
+        </button>
         <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* img */}
@@ -240,7 +241,6 @@ const Post = ({ post }) => {
               <Map coordinates={post.coordinates} />
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}`}
-
                 className=" cursor-pointer p-5 w-full bg-slate-400"
               >
                 Google map
@@ -249,6 +249,7 @@ const Post = ({ post }) => {
           </div>
         </div>
       </div>
+      <Recomends />
     </div>
   );
 };

@@ -43,6 +43,7 @@ const Modal = () => {
           >
             &#8203;
           </span> */}
+
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -55,7 +56,7 @@ const Modal = () => {
               {/* Modalの中身 */}
               <div className=" inline-block align-top bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6 ">
                 <div>
-                  <SearchBox />
+                  <SearchBox className="" />
                   <Hits hitComponent={Hit} />
                 </div>
               </div>
