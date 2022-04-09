@@ -20,6 +20,7 @@ const Flyers = () => {
           <div className=" mx-auto md:mb-5 mb-2  px-2">
             <FilterdCard />
           </div>
+          <Stories/>
           <Posts />
         </section>
 

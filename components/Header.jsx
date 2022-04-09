@@ -42,7 +42,7 @@ const Header = () => {
 
         {/* center */}
         {session && (
-          <div className=" relative flex mt-1 p-3 rounded-md max-w-sm items-center">
+          <div className=" relative flex mt-1 p-3 rounded-md max-w-xs items-center">
             {/* <div
               onClick={() => router.push("/filters")}
               className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
