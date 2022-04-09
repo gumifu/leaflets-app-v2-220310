@@ -42,7 +42,8 @@ const Stories = () => {
           <div
             className="flex flex-col items-center justify-center"
           >
-          <img
+            <img
+            key={category.image}
             src={category.image}
             className='h-20 w-20 mx-10 rounded-full border-red-500 border-2 object-cover cursor-pointer hover:scale-110 transition transform duration-200 ease-out mb-1'
             alt="category" />
