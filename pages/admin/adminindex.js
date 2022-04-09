@@ -105,15 +105,17 @@ export default function AdminIndex() {
 
     const imageRefDesignedBy = ref(storage, `posts/${docRef.id}/image99`);
 
-    await uploadString(imageRefDesignedBy, selectedFileDesignedBy, "data_url").then(
-      async (snaphot) => {
-        const downloadURL = await getDownloadURL(imageRefDesignedBy);
+    await uploadString(
+      imageRefDesignedBy,
+      selectedFileDesignedBy,
+      "data_url"
+    ).then(async (snaphot) => {
+      const downloadURL = await getDownloadURL(imageRefDesignedBy);
 
-        await updateDoc(doc(db, "posts", docRef.id), {
-          image99: downloadURL,
-        });
-      }
-    );
+      await updateDoc(doc(db, "posts", docRef.id), {
+        image99: downloadURL,
+      });
+    });
     setLoading(false);
     setSelectedFile(null);
     setSelectedFile2(null);
@@ -336,23 +338,23 @@ export default function AdminIndex() {
                       type="url"
                       placeholder="ホームページ"
                     />
-                  {selectedFileDesignedBy ? (
-                  <img
-                    src={selectedFileDesignedBy}
-                    onClick={() => setSelectedFileDesignedBy(null)}
-                    alt=""
-                    className="w-full object-contain cursor-pointer"
-                  />
-                ) : (
-                  <div
-                    onClick={() => filePickerRefDesignedBy.current.click()}
-                    className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
-                  >
-                    <CameraIcon
-                      className="h-6 w-6 text-blue-600"
-                      aria-hidden="true"
-                    />
-                  </div>
+                    {selectedFileDesignedBy ? (
+                      <img
+                        src={selectedFileDesignedBy}
+                        onClick={() => setSelectedFileDesignedBy(null)}
+                        alt=""
+                        className="w-full object-contain cursor-pointer"
+                      />
+                    ) : (
+                      <div
+                        onClick={() => filePickerRefDesignedBy.current.click()}
+                        className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
+                      >
+                        <CameraIcon
+                          className="h-6 w-6 text-blue-600"
+                          aria-hidden="true"
+                        />
+                      </div>
                     )}
                     <div>
                       <input

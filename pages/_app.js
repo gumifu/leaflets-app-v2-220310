@@ -33,9 +33,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
       {pageLoading && loadingComponent}
       <SessionProvider session={session}>
         <ThemeProvider attribute="class" defaultTheme="light">
-        <RecoilRoot>
-          <Component {...pageProps} />
-        </RecoilRoot>
+          <RecoilRoot>
+            <Component {...pageProps} />
+          </RecoilRoot>
         </ThemeProvider>
       </SessionProvider>
     </>
