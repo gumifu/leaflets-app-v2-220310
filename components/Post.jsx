@@ -192,7 +192,7 @@ const Post = ({
                   className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
                 >
                   {" "}
-                  <img src="/maps-type.svg" className="h-5" />
+                  <img src="/maps-type.svg" className="md:h-5 h-3" />
                   <FiExternalLink className="text-lg text-white ml-2" />
                 </a>
               </div>
@@ -206,7 +206,7 @@ const Post = ({
                   <div className="">
                     {likes.length > 0 && (
                       <p className="absolute -top-2 -right-1 text-xs w-5 h-5 bg-gray-500 rounded-full flex justify-center items-center text-white">
-                        {likes.length + 10}
+                        {likes.length}
                       </p>
                     )}
                   </div>
@@ -218,7 +218,7 @@ const Post = ({
                   rel="noopener noreferrer"
                   className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
                 >
-                  <img src="/maps-type.svg" className="h-5" />
+                  <img src="/maps-type.svg" className="md:h-5 h-3" />
                   <FiExternalLink className="text-lg text-white ml-2" />
                 </a>
                 {/* <div className="md:text-base text-sm text-white w-full pl-5">

@@ -56,7 +56,7 @@ const Header = () => {
                   <SearchIcon className="h-5 w-5 text-gray-500" />
                 </div>
                 <input
-                  className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
+                  className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full max-w-sm"
                   type="text"
                   placeholder="検索"
                   onClick={() => setOpen(true)}

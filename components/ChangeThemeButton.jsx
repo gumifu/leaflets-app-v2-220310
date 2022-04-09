@@ -14,6 +14,7 @@ export const ChangeThemeButton = () => {
         aria-label="DarkModeToggle"
         type="button"
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        // onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
       >
         {mounted && <>{theme === 'dark' ? <HiOutlineMoon /> : <HiOutlineSun />}</>}
       </button>
