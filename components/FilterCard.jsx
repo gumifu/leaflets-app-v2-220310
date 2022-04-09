@@ -26,7 +26,7 @@ const FilterdCard = ({ placeholder }) => {
 
   return (
     <div className="">
-      <div className="grid grid-cols-3 items-center justify-center shadow-md  bg-white bg-opacity-10 rounded-lg w-full">
+      <div className="grid grid-cols-3 items-center justify-center shadow-md w-full">
         <div className=" col-span-1 mx-auto">
           {/* <div className="absolute ">
             <img src="/copy-image.png"
@@ -45,7 +45,7 @@ const FilterdCard = ({ placeholder }) => {
             />
           </div>
         </div>
-        <div className=" col-span-3 md:col-span-2 md:mr-5 m-3">
+        <div className="bg-white bg-opacity-10 p-5 rounded-lg col-span-3 md:col-span-2 md:mr-5 m-3">
           <p className=" text-white">■ エリア / カテゴリーを入力</p>
           <div className="flex items-center rounded-md lg:mb-3 mb-1 py-2 md:shadow-sm border-none">
             <select

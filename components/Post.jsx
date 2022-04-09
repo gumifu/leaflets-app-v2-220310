@@ -137,8 +137,8 @@ const Post = ({
         </div>
         {/* img */}
         <Nextlink passHref href={`/postdetail/${id}`}>
-          <div className="bg-gray-100 p-2 cursor-pointer ">
-            <div className="block bg-white shadow-lg shadow-gray-800 w-full h-full">
+          <div className="flex flex-col items-center justify-center bg-white p-2 cursor-pointer ">
+            <div className="block text-center bg-white shadow-sm shadow-gray-800 w-full h-full">
               <img
                 src={img}
                 alt=""
@@ -147,6 +147,7 @@ const Post = ({
                 // objectFit="fill"
               />
             </div>
+              <p className=" text-center mt-3 font-bold w-3/5 truncate text-gray-500 ">{shopName}</p>
           </div>
         </Nextlink>
         {/* Button */}
@@ -186,7 +187,7 @@ const Post = ({
                   <p className=" ">{caption}</p>
                 </div> */}
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${classification}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${placeInfo}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
@@ -213,7 +214,7 @@ const Post = ({
                 </div>
 
                 <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${classification}`}
+                  href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${placeInfo}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="h-10 cursor-pointer border-2 border-white border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"

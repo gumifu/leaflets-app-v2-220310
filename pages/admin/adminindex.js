@@ -18,8 +18,6 @@ import { Spinner } from "../../components/Spinner";
 
 export default function AdminIndex() {
   const { data: session } = useSession();
-  const filePickerRef = useRef(null);
-  const filePickerRef2 = useRef(null);
   const captionRef = useRef(null);
   const prefecRef = useRef(null);
   const placeRef = useRef(null);
@@ -28,11 +26,18 @@ export default function AdminIndex() {
   const emailRef = useRef(null);
   const telRef = useRef(null);
   const homepageRef = useRef(null);
+  const designedByRef = useRef(null);
+  const designedByLink = useRef(null);
   const latRef = useRef(null);
   const lngRef = useRef(null);
   const [loading, setLoading] = useState(false);
+  // image
+  const filePickerRef = useRef(null);
+  const filePickerRef2 = useRef(null);
+  const filePickerRefDesignedBy = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
+  const [selectedFileDesignedBy, setSelectedFileDesignedBy] = useState(null);
   // const [selectedFile3, setSelectedFile3] = useState(null);
   // const [selectedFile4, setSelectedFile4] = useState(null);
   // const [selectedFile5, setSelectedFile5] = useState(null);
@@ -60,6 +65,8 @@ export default function AdminIndex() {
       shopEmail: emailRef.current.value,
       shopTel: telRef.current.value,
       shopHomepage: homepageRef.current.value,
+      designedByRef: designedByRef.current.value,
+      designedByLink: designedByLink.current.value,
       // profileImg: session.user.image,
       coordinates: {
         latitude: Number(latRef.current.value),
@@ -70,7 +77,7 @@ export default function AdminIndex() {
     // await addDoc(collection(db, "posts"), {
     //   coordinates: lesserGeopoint(latRef.current.value, lngRef.current.value)
     // });
-    console.log("New doc added with ID", docRef.id);
+    // console.log("New doc added with ID", docRef.id);
     // img to Storage! & Store
     const imageRef = ref(storage, `posts/${docRef.id}/image`);
 
@@ -83,6 +90,7 @@ export default function AdminIndex() {
         });
       }
     );
+
     const imageRef2 = ref(storage, `posts/${docRef.id}/image2`);
 
     await uploadString(imageRef2, selectedFile2, "data_url").then(
@@ -94,9 +102,22 @@ export default function AdminIndex() {
         });
       }
     );
+
+    const imageRefDesignedBy = ref(storage, `posts/${docRef.id}/image99`);
+
+    await uploadString(imageRefDesignedBy, selectedFileDesignedBy, "data_url").then(
+      async (snaphot) => {
+        const downloadURL = await getDownloadURL(imageRefDesignedBy);
+
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image99: downloadURL,
+        });
+      }
+    );
     setLoading(false);
     setSelectedFile(null);
     setSelectedFile2(null);
+    setSelectedFileDesignedBy(null);
   };
 
   const addImageToPost = (e) => {
@@ -119,6 +140,17 @@ export default function AdminIndex() {
       setSelectedFile2(readerEvent.target.result);
     };
     console.log(reader2);
+  };
+
+  const addImageToPostDesignedBy = (e) => {
+    const reader3 = new FileReader();
+    if (e.target.files[0]) {
+      reader3.readAsDataURL(e.target.files[0]);
+    }
+    reader3.onload = (readerEvent) => {
+      setSelectedFileDesignedBy(readerEvent.target.result);
+    };
+    console.log(reader3);
   };
 
   return (
@@ -273,6 +305,7 @@ export default function AdminIndex() {
                         <option value="東京都">東京都</option>
                         <option value="北海道">北海道</option>
                         <option value="山口県">山口県</option>
+                        <option value="沖縄県">沖縄県</option>
                         <option value="その他">その他</option>
                       </select>
                       <input
@@ -302,6 +335,45 @@ export default function AdminIndex() {
                       ref={homepageRef}
                       type="url"
                       placeholder="ホームページ"
+                    />
+                  {selectedFileDesignedBy ? (
+                  <img
+                    src={selectedFileDesignedBy}
+                    onClick={() => setSelectedFileDesignedBy(null)}
+                    alt=""
+                    className="w-full object-contain cursor-pointer"
+                  />
+                ) : (
+                  <div
+                    onClick={() => filePickerRefDesignedBy.current.click()}
+                    className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
+                  >
+                    <CameraIcon
+                      className="h-6 w-6 text-blue-600"
+                      aria-hidden="true"
+                    />
+                  </div>
+                    )}
+                    <div>
+                      <input
+                        ref={filePickerRefDesignedBy}
+                        type="file"
+                        hidden
+                        onChange={addImageToPostDesignedBy}
+                        required
+                      />
+                    </div>
+                    <input
+                      className="mt-5 border-none focus:right-0 w-full text-center"
+                      ref={designedByRef}
+                      type="url"
+                      placeholder="デザイン会社"
+                    />
+                    <input
+                      className="mt-5 border-none focus:right-0 w-full text-center"
+                      ref={designedByLink}
+                      type="url"
+                      placeholder="デザイン会社 ホームページリンク"
                     />
                   </div>
                 </div>
