@@ -51,7 +51,7 @@ const Header = () => {
           {/* <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
                 <p>条件検索</p>
               </div> */}
-          <div className="">
+          {/* <div className=""> */}
             <div className="relative lg:p-3 p-1 rounded-md ">
               <div className="absolute inset-y-0 pl-3 flex items-center">
                 <SearchIcon className="h-5 w-5 text-gray-500" />
@@ -63,7 +63,7 @@ const Header = () => {
                 onClick={() => setOpen(true)}
               />
             </div>
-          </div>
+          {/* </div> */}
         </div>
         {/* )} */}
 
