@@ -52,9 +52,9 @@ const Posts = () => {
             placeInfo={post.data().place}
             coordinates={post.data().coordinates}
             shopName={post.data().shopName}
-            // shopEmail={ post.data().shopEmail}
-            // shopTel={ post.data().shopTel}
-            // shopHomepage={ post.data().shopHomepage}
+            shopEmail={post.data().shopEmail}
+            shopTel={post.data().shopTel}
+            shopHomepage={post.data().shopHomepage}
           />
         ))}
       </Masonry>

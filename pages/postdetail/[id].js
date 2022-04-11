@@ -26,6 +26,7 @@ import { useRouter } from "next/router";
 import Header from "../../components/Header";
 import DetailFlyerImage from "../../components/DetailFlyerImage";
 import Recomends from "../../components/Recomends";
+import { FiExternalLink } from "react-icons/fi";
 
 const Post = ({ post }) => {
   const router = useRouter();
@@ -168,12 +169,12 @@ const Post = ({ post }) => {
                         </div>
                       </>
                     )}
-                    <PaperAirplaneIcon className="btn rotate-45" />
+                    {/* <PaperAirplaneIcon className="btn rotate-45" /> */}
                   </div>
                   {/* <BookmarkIcon className="btn" /> */}
-                  <p className="px-5 py-3 mr-5 md:px-0 rounded-full truncate text-red-400 w-40 text-center">
+                  <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
                     {prefectures}
-                    {placeInfo}
+                    {post.place}
                   </p>
                 </div>
               )}
@@ -183,7 +184,7 @@ const Post = ({ post }) => {
                   )}
                 </div> */}
               {/* caption */}
-              <p className="px-10 py-5 truncate font-bold">
+              <p className="px-10 py-5 font-bold">
                 <span>{caption}</span>
               </p>
 
@@ -235,13 +236,16 @@ const Post = ({ post }) => {
                   </button>
                 </form>
               )}
-              <Map coordinates={post.coordinates} />
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}`}
-                className=" cursor-pointer p-5 w-full bg-slate-400"
+                href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${post.place}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 cursor-pointer border-2 bg-blue-400 border-blue-300 border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
               >
-                Google map
+                <img src="/Googlemaps-type.svg" className="md:h-5 h-3" />
+                <FiExternalLink className="text-lg text-white ml-2" />
               </a>
+              <Map coordinates={post.coordinates} />
             </div>
           </div>
         </div>

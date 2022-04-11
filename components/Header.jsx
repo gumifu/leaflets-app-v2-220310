@@ -41,30 +41,30 @@ const Header = () => {
         </div>
 
         {/* center */}
-        {session && (
-          <div className=" relative flex mt-1 p-3 rounded-md max-w-xs items-center">
-            {/* <div
+        {/* {session && ( */}
+        <div className=" relative flex mt-1 p-3 rounded-md max-w-xs items-center">
+          {/* <div
               onClick={() => router.push("/filters")}
               className=" flex items-center justify-center w-full h-full bg-blue-500 rounded-full hover:bg-opacity-80 cursor-pointer"
             > */}
-            {/* <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
+          {/* <div className="flex items-center justify-center h-14 w-32 pl-5   text-white rounded-full">
                 <p>条件検索</p>
               </div> */}
-            <div className="">
-              <div className="relative lg:p-3 p-1 rounded-md ">
-                <div className="absolute inset-y-0 pl-3 flex items-center">
-                  <SearchIcon className="h-5 w-5 text-gray-500" />
-                </div>
-                <input
-                  className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full max-w-sm"
-                  type="text"
-                  placeholder="検索"
-                  onClick={() => setOpen(true)}
-                />
+          <div className="">
+            <div className="relative lg:p-3 p-1 rounded-md ">
+              <div className="absolute inset-y-0 pl-3 flex items-center">
+                <SearchIcon className="h-5 w-5 text-gray-500" />
               </div>
+              <input
+                className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full max-w-sm"
+                type="text"
+                placeholder="検索"
+                onClick={() => setOpen(true)}
+              />
             </div>
           </div>
-        )}
+        </div>
+        {/* )} */}
 
         {/* right */}
         <div className="flex items-center md:mr-5 justify-end md:space-x-4 space-x-0">
@@ -85,13 +85,12 @@ const Header = () => {
                 alt="profile pic"
                 className="hidden sm:inline-block h-10 w-10 object-cover rounded-full cursor-pointer"
               />
-              <HeaderTest/>
+              <HeaderTest />
             </>
           ) : (
             <button className="text-blue-400 text-lg pr-8" onClick={signIn}>
               サインイン
-              </button>
-
+            </button>
           )}
         </div>
       </div>

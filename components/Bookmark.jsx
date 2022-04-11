@@ -19,6 +19,7 @@ import { db } from "../firebase";
 import Nextlink from "next/link";
 import { Dialog, Transition } from "@headlessui/react";
 import { useRecoilState } from "recoil";
+import { FiExternalLink } from "react-icons/fi";
 
 const Bookmark = ({
   id,
@@ -116,7 +117,7 @@ const Bookmark = ({
                   <img
                     src={img}
                     alt=""
-                    className="object-cover w-full hover:scale-105 transition-all duration-500 ease-in-out"
+                    className="object-cover w-full hover:scale-95 transition-all duration-500 ease-in-out"
                   />
                 </div>
               </div>
@@ -144,10 +145,26 @@ const Bookmark = ({
                   )} */}
                 </div>
                 {/* <BookmarkIcon className="btn" /> */}
-                <p className="text-sm md:text-xl px-5 py-3 mr-5 md:px-0 rounded-full text-red-400 text-right">
-                  {prefectures}
-                  {placeInfo}
-                </p>
+                <div className="">{shopName}</div>
+                <div className="flex items-center justify-between">
+                  <div className="">
+                    <p className="text-sm md:text-base px-5 py-3 mr-5 md:px-0 rounded-full text-red-400 text-right">
+                      {prefectures}
+                      {placeInfo}
+                    </p>
+                  </div>
+                  <div className="">
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${placeInfo}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-10 cursor-pointer border-2 bg-blue-400 border-blue-300 border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
+                    >
+                      <img src="/Googlemaps-type.svg" className="md:h-5 h-3" />
+                      <FiExternalLink className="text-lg text-white ml-2" />
+                    </a>
+                  </div>
+                </div>
               </div>
             )}
 
