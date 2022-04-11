@@ -306,6 +306,7 @@ export default function AdminIndex() {
                         <option value="福岡県">福岡県</option>
                         <option value="東京都">東京都</option>
                         <option value="北海道">北海道</option>
+                        <option value="宮城県">宮城県</option>
                         <option value="山口県">山口県</option>
                         <option value="沖縄県">沖縄県</option>
                         <option value="その他">その他</option>
