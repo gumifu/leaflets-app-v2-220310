@@ -5,8 +5,8 @@ export default function signIn({ providers }) {
   return (
     <div className="bg-main">
       <Header />
-      <div className="flex flex-col items-center justify-center min-h-screen -mt-32 py-2  px-14">
-        <img src="/logo-main-white.svg" className="w-60" />
+      <div className="flex flex-col items-center justify-center min-h-screen -mt-32 py-2 px-14">
+        <img src="/logo-main-white.svg" className="md:w-60 w-32" />
 
         <p className="font-lg italic mt-5 text-gray-100">leafletsへようこそ!</p>
         <div className="md:mt-40 mt-20">

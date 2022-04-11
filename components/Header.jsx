@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { SearchIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import { BookmarkIcon as BookmarkSolidIcon } from "@heroicons/react/solid";
+import { BiLogIn } from "react-icons/bi";
 import { HomeIcon } from "@heroicons/react/solid";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -56,7 +57,7 @@ const Header = () => {
                 <SearchIcon className="h-5 w-5 text-gray-500" />
               </div>
               <input
-                className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full max-w-sm"
+                className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
                 type="text"
                 placeholder="検索"
                 onClick={() => setOpen(true)}
@@ -77,7 +78,7 @@ const Header = () => {
               {/* <MenuIcon className="btn h-8 md:hidden cursor-pointer text-white" /> */}
               <BookmarkSolidIcon
                 onClick={() => router.push("/bookmarks")}
-                className="btn md:h-10 h-8 inline-block  text-blue-500"
+                className="btn md:h-10 h-8 inline-block max-w-xs text-blue-500"
               />
               <img
                 onClick={signOut}
@@ -88,9 +89,14 @@ const Header = () => {
               <HeaderTest />
             </>
           ) : (
-            <button className="text-blue-400 text-lg pr-8" onClick={signIn}>
+              <>
+            <button className="hidden md:inline-block text-blue-400 text-sm md:text-lg md:pr-8 pr-0" onClick={signIn}>
               サインイン
             </button>
+            <button className="md:hidden text-blue-400 text-4xl " onClick={signIn}>
+              <BiLogIn/>
+            </button>
+              </>
           )}
         </div>
       </div>
