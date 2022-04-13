@@ -265,7 +265,7 @@ export async function getStaticProps({ params }) {
   const post = JSON.parse(JSON.stringify(post1));
 
   post.id = postSnapshot.id;
-    console.log(post);
+    // console.log(post);
   return {
     props: {
       post,
