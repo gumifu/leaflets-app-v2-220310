@@ -259,6 +259,25 @@ const Post = ({ post }) => {
 
 export default Post
 
+export async function getStaticPaths() {
+  const postSnapshot = await getDocs(collection(db, 'posts'));
+  const posts = postSnapshot.docs.map(doc => {
+    const data = doc.data();
+    data.id = doc.id;
+    return data;
+  });
+  const paths = posts.map(post => ({
+    params: {
+      id: post.id.toString()
+    },
+  }));
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
+
 export async function getStaticProps({ params }) {
   const id = params.id;
   const postSnapshot = await getDoc(doc(db, "posts", id));
@@ -277,23 +296,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
-  const postSnapshot = await getDocs(collection(db, 'posts'));
-  const posts = postSnapshot.docs.map(doc => {
-    const data = doc.data();
-    data.id = doc.id;
-    return data;
-  });
-  const paths = posts.map(post => ({
-    params: {
-      id: post.id.toString()
-    },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
 
 
 // export const getStaticPaths = async () => {
