@@ -27,6 +27,7 @@ export const Map = ({ coordinates }) => {
           streetViewControl: true,
           fullscreenControl: true,
         }}
+        yesIWantToUseGoogleMapApiInternals={true}
       ></GoogleMapReact>
     </div>
   );
