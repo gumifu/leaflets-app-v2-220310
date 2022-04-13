@@ -15,7 +15,7 @@ const Header = () => {
   const [open, setOpen] = useRecoilState(modalState);
   // console.log(session.user.uid);
   return (
-    <div className="sticky md:top-10 top-0 md:mx-5 z-50 md:mb-20 mb-5">
+    <div className="sticky md:top-10 top-0 md:mx-5 z-50 md:mb-20 mb-0">
       <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black md:rounded-full bg-opacity-20 backdrop-blur-md px-4 py-2">
         {/* left */}
         <div

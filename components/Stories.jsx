@@ -72,9 +72,9 @@ const Stories = () => {
   // ];
 
   return (
-    <div className="mt-8 shadow-md">
+    <div className="md:mt-8 shadow-md">
       <h3 className="text-white ml-3">■カテゴリー(未実装)</h3>
-      <div className="p-6  overflow-x-scroll scrollbar-thin scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-900 mx-1">
+      <div className="md:p-6 p-3 overflow-x-scroll scrollbar-thin scrollbar scrollbar-thumb-gray-500 scrollbar-track-gray-900 mx-1">
         {/* {session && (
           <Story img={session.user.image} username={session.user.name} />
         )}

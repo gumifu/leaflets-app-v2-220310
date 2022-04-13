@@ -26,7 +26,7 @@ const FilterdCard = ({ placeholder }) => {
 
   return (
     <div className="">
-      <div className="flex items-center justify-center shadow-md w-full">
+      <div className="flex md:mt-8 mt-4 items-center justify-center shadow-md w-full">
         <div className="bg-[url('/copy-image.png')] bg-cover w-1/5 ml-3 p-5 hidden md:inline-block">
           <img
             src="/copy.png"
