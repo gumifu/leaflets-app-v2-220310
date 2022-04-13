@@ -278,11 +278,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const postCollection = collection(db, 'posts');
-  const postSnapshot = await getDocs(postCollection);
+  const postSnapshot = await getDocs(collection(db, 'posts'));
   const posts = postSnapshot.docs.map(doc => {
     const data = doc.data();
-    data.id = doc.id;
+    data.id = doc.id.toString();
     return data;
   });
   const paths = posts.map(post => ({
@@ -292,7 +291,7 @@ export async function getStaticPaths() {
   }));
   return {
     paths,
-    // fallback: false,
+    fallback: false,
   };
 }
 
