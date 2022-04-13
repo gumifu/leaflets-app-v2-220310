@@ -5,7 +5,7 @@
 
 // module.exports = nextConfig
 module.exports = {
-  // trailingSlash: true,
+  trailingSlash: true,
   images: {
     domains:["firebasestorage.googleapis.com"],
   }
