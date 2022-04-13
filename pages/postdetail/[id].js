@@ -27,9 +27,9 @@ import Header from "../../components/Header";
 import DetailFlyerImage from "../../components/DetailFlyerImage";
 import Recomends from "../../components/Recomends";
 import { FiExternalLink } from "react-icons/fi";
+import { async } from "@firebase/util";
 
 const Post = ({ post }) => {
-  const router = useRouter();
   const {
     id,
     accountName,
@@ -43,6 +43,8 @@ const Post = ({ post }) => {
     shopTel,
     shopHomepage,
   } = post;
+  const router = useRouter();
+  // const postprops = JSON.parse(postProps);
   // console.log(post.image);
   const { data: session } = useSession();
   const [comment, setComment] = useState("");
@@ -255,7 +257,7 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post;
+export default Post
 
 export async function getStaticProps({ params }) {
   const id = params.id;
@@ -270,13 +272,13 @@ export async function getStaticProps({ params }) {
   //   console.log(jsonPost);
   return {
     props: {
-      post,
+      post
     },
   };
 }
 
 export async function getStaticPaths() {
-  const postCollection = collection(db, "posts");
+  const postCollection = collection(db, 'posts');
   const postSnapshot = await getDocs(postCollection);
   const posts = postSnapshot.docs.map(doc => {
     const data = doc.data();
@@ -285,11 +287,41 @@ export async function getStaticPaths() {
   });
   const paths = posts.map(post => ({
     params: {
-      id: post.id,
+      id: post.id
     },
   }));
   return {
     paths,
-    fallback: false,
+    fallback: false
   };
 }
+
+
+// export const getStaticPaths = async () => {
+//   const snapshot = await getDocs(collection(db, 'posts'));
+//   const paths = snapshot.docs.map(doc => {
+//     return {
+//       params: {
+//         id: doc.id.toString()
+//       }
+//     }
+//   })
+
+//   return {
+//     paths,
+//     fallback:false
+//   }
+// }
+
+// export const getStaticProps = async (context) => {
+//   const id = context.params.id;
+
+//   const docRef = doc(db, "posts", id);
+//   const docSnap = await getDoc(docRef);
+
+//   return {
+//     props: {
+//       postProps:JSON.stringify(docSnap.data())||null
+//     }
+//   }
+// }
