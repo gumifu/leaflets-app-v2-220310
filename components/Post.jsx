@@ -28,6 +28,7 @@ import { BiCategoryAlt, BiLocationPlus } from "react-icons/bi";
 import { MdOutlineCategory } from "react-icons/md";
 import { FiExternalLink } from "react-icons/fi";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Post = ({
   id,
@@ -51,6 +52,7 @@ const Post = ({
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [loading, setLoading] = useState(true);
+  const router = useRouter()
 
   // const [isOpen, setIsOpen] = useRecoilState(modalState);
 
@@ -137,7 +139,17 @@ const Post = ({
           </div>
         </div>
         {/* img */}
-        <Link href="/postdetail/[id]" as={`/postdetail/${id}`}>
+        <div
+      type="button"
+      onClick={() => {
+        router.push({
+          pathname: '/postdetail/[id]',
+          query: { id:id },
+        })
+      }}
+        >
+
+        {/* <Link href="/postdetail?uri=[id]" as={`/postdetail/${id}`}> */}
           {/* <Nextlink passHref href={`/postdetail/${id}`}> */}
           <div className="flex flex-col items-center justify-center p-2 cursor-pointer ">
             <div className="block text-center bg-white shadow-sm shadow-gray-800 w-full h-full">
@@ -154,7 +166,8 @@ const Post = ({
             </p>
           </div>
         {/* </Nextlink> */}
-        </Link>
+        {/* </Link> */}
+    </div>
         {/* Button */}
         {session && (
           <div className="m-2 py-2 truncate">
