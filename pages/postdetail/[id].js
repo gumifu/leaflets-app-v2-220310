@@ -261,11 +261,13 @@ export async function getStaticProps({ params }) {
   const id = params.id;
   const postSnapshot = await getDoc(doc(db, "posts", id));
   // const post = postSnapshot.data();
-  const post1 = postSnapshot.data();
-  const post = JSON.parse(JSON.stringify(post1));
+  const post = postSnapshot.data();
+  post.timestamp = post.timestamp.toString()
+
+  // const post = JSON.parse(JSON.stringify(post1));
 
   post.id = postSnapshot.id;
-    // console.log(post);
+  //   console.log(jsonPost);
   return {
     props: {
       post,
@@ -276,12 +278,12 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const postCollection = collection(db, "posts");
   const postSnapshot = await getDocs(postCollection);
-  const posts = postSnapshot.docs.map((doc) => {
+  const posts = postSnapshot.docs.map(doc => {
     const data = doc.data();
     data.id = doc.id;
     return data;
   });
-  const paths = posts.map((post) => ({
+  const paths = posts.map(post => ({
     params: {
       id: post.id,
     },
