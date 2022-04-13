@@ -137,8 +137,8 @@ const Post = ({
           </div>
         </div>
         {/* img */}
-        <Link href={`/postdetail/?id=${id}`} as={`/postdetail/${id}`} prefetch>
-          {/* <Nextlink passHref href={`/postdetail/${id}`}> */}
+        {/* <Link href={`/postdetail/?id=${id}`} as={`/postdetail/${id}`} prefetch> */}
+          <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="flex flex-col items-center justify-center p-2 cursor-pointer ">
             <div className="block text-center bg-white shadow-sm shadow-gray-800 w-full h-full">
               <img
@@ -153,7 +153,7 @@ const Post = ({
               {shopName}
             </p>
           </div>
-        </Link>
+        </Nextlink>
         {/* Button */}
         {session && (
           <div className="m-2 py-2 truncate">
