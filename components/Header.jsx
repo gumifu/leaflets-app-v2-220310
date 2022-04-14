@@ -52,17 +52,17 @@ const Header = () => {
                 <p>条件検索</p>
               </div> */}
           {/* <div className=""> */}
-            <div className="relative lg:p-3 p-1 rounded-md ">
-              <div className="absolute inset-y-0 pl-3 flex items-center">
-                <SearchIcon className="h-5 w-5 text-gray-500" />
-              </div>
-              <input
-                className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
-                type="text"
-                placeholder="検索"
-                onClick={() => setOpen(true)}
-              />
+          <div className="relative lg:p-3 p-1 rounded-md ">
+            <div className="absolute inset-y-0 pl-3 flex items-center">
+              <SearchIcon className="h-5 w-5 text-gray-500" />
             </div>
+            <input
+              className=" md:h-14 h-10 bg-gray-50 block pl-10 sm:text-sm border-gray-300 focus:ring-blue-100 rounded-full"
+              type="text"
+              placeholder="検索"
+              onClick={() => setOpen(true)}
+            />
+          </div>
           {/* </div> */}
         </div>
         {/* )} */}
@@ -89,14 +89,20 @@ const Header = () => {
               <HeaderTest />
             </>
           ) : (
-              <>
-            <button className="hidden md:inline-block text-blue-400 text-sm md:text-lg md:pr-8 pr-0" onClick={signIn}>
-              サインイン
-            </button>
-            <button className="md:hidden text-blue-400 text-4xl " onClick={signIn}>
-              <BiLogIn/>
-            </button>
-              </>
+            <>
+              <button
+                className="hidden md:inline-block text-blue-400 text-sm md:text-lg md:pr-8 pr-0"
+                onClick={signIn}
+              >
+                サインイン
+              </button>
+              <button
+                className="md:hidden text-blue-400 text-4xl "
+                onClick={signIn}
+              >
+                <BiLogIn />
+              </button>
+            </>
           )}
         </div>
       </div>

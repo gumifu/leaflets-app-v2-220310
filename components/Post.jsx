@@ -52,7 +52,7 @@ const Post = ({
   const [likes, setLikes] = useState([]);
   const [hasLiked, setHasLiked] = useState(false);
   const [loading, setLoading] = useState(true);
-  const router = useRouter()
+  const router = useRouter();
 
   // const [isOpen, setIsOpen] = useRecoilState(modalState);
 
@@ -139,18 +139,17 @@ const Post = ({
           </div>
         </div>
         {/* img */}
-        <div
-      type="button"
-      onClick={() => {
-        router.push({
-          pathname: '/postdetail/[id]',
-          query: { id:id },
-        })
-      }}
-        >
-
-        {/* <Link href="/postdetail?uri=[id]" as={`/postdetail/${id}`}> */}
-          {/* <Nextlink passHref href={`/postdetail/${id}`}> */}
+        {/* <div
+          type="button"
+          onClick={() => {
+            router.push({
+              pathname: "/postdetail/[id]",
+              query: { id: id },
+            });
+          }}
+        > */}
+          {/* <Link href={`/postdetail/${id}`}> */}
+          <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="flex flex-col items-center justify-center p-2 cursor-pointer ">
             <div className="block text-center bg-white shadow-sm shadow-gray-800 w-full h-full">
               <img
@@ -165,9 +164,9 @@ const Post = ({
               {shopName}
             </p>
           </div>
-        {/* </Nextlink> */}
-        {/* </Link> */}
-    </div>
+          </Nextlink>
+          {/* </Link> */}
+        {/* </div> */}
         {/* Button */}
         {session && (
           <div className="m-2 py-2 truncate">

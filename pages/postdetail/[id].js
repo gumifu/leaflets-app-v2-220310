@@ -20,7 +20,6 @@ import {
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import Moment from "react-moment";
-import { db } from "../../firebase";
 import { Map } from "../../components/Map";
 import { useRouter } from "next/router";
 import Header from "../../components/Header";
@@ -28,99 +27,101 @@ import DetailFlyerImage from "../../components/DetailFlyerImage";
 import Recomends from "../../components/Recomends";
 import { FiExternalLink } from "react-icons/fi";
 import { async } from "@firebase/util";
+import { db } from "../../firebase";
 
-const Post = ({ post }) => {
-  const {
-    id,
-    accountName,
-    profileImg,
-    img,
-    caption,
-    prefectures,
-    placeInfo,
-    shopName,
-    shopEmail,
-    shopTel,
-    shopHomepage,
-  } = post;
-  const router = useRouter();
-  // const postprops = JSON.parse(postProps);
+const DetailPost = ({ post }) => {
   // console.log(post.image);
+  // const {
+  //   id,
+  //   accountName,
+  //   profileImg,
+  //   img,
+  //   caption,
+  //   prefectures,
+  //   placeInfo,
+  //   shopName,
+  //   shopEmail,
+  //   shopTel,
+  //   shopHomepage,
+  // } = post;
+  // const router = useRouter();
+  // // const postprops = JSON.parse(postProps);
+  // // console.log(post.image);
   const { data: session } = useSession();
-  const [comment, setComment] = useState("");
-  const [comments, setComments] = useState([]);
-  const [likes, setLikes] = useState([]);
-  const [hasLiked, setHasLiked] = useState(false);
+  // const [comment, setComment] = useState("");
+  // const [comments, setComments] = useState([]);
+  // const [likes, setLikes] = useState([]);
+  // const [hasLiked, setHasLiked] = useState(false);
 
-  useEffect(
-    () =>
-      onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
-        setLikes(snapshot.docs)
-      ),
-    [db, id]
-  );
+  // useEffect(
+  //   () =>
+  //     onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
+  //       setLikes(snapshot.docs)
+  //     ),
+  //   [db, id]
+  // );
 
-  //hasliked
-  useEffect(
-    () =>
-      setHasLiked(
-        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
-      ),
-    [likes]
-  );
+  // //hasliked
+  // useEffect(
+  //   () =>
+  //     setHasLiked(
+  //       likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+  //     ),
+  //   [likes]
+  // );
 
-  //Confirmation of like? or not?
-  const likePost = async () => {
-    if (hasLiked) {
-      //delete!!!!!
-      await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));
-    } else {
-      await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
-        //If you want to send more data
-        accountName: session.user.name,
-        timestamp: serverTimestamp(),
-      });
-    }
-  };
+  // //Confirmation of like? or not?
+  // const likePost = async () => {
+  //   if (hasLiked) {
+  //     //delete!!!!!
+  //     await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));
+  //   } else {
+  //     await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
+  //       //If you want to send more data
+  //       accountName: session.user.name,
+  //       timestamp: serverTimestamp(),
+  //     });
+  //   }
+  // };
 
-  // console.log(hasLiked);
+  // // console.log(hasLiked);
 
-  // snapshot comment!
-  useEffect(
-    () =>
-      onSnapshot(
-        query(
-          collection(db, "posts", id, "comments"),
-          orderBy("timestamp", "desc")
-        ),
-        (snapshot) => setComments(snapshot.docs)
-      ),
-    [db, id]
-  );
-  comments.map((comment) => {
-    console.log(comment.id);
-  });
+  // // snapshot comment!
+  // useEffect(
+  //   () =>
+  //     onSnapshot(
+  //       query(
+  //         collection(db, "posts", id, "comments"),
+  //         orderBy("timestamp", "desc")
+  //       ),
+  //       (snapshot) => setComments(snapshot.docs)
+  //     ),
+  //   [db, id]
+  // );
+  // comments.map((comment) => {
+  //   console.log(comment.id);
+  // });
 
-  //send comment to firebase!
-  const sendComment = async (e) => {
-    e.preventDefault();
+  // //send comment to firebase!
+  // const sendComment = async (e) => {
+  //   e.preventDefault();
 
-    const commentToSend = comment;
-    setComment("");
-    // コメントを入れる
-    await addDoc(collection(db, "posts", id, "comments"), {
-      comment: commentToSend,
-      username: session.user.name,
-      userImage: session.user.image,
-      timestamp: serverTimestamp(),
-    });
-  };
+  //   const commentToSend = comment;
+  //   setComment("");
+  //   // コメントを入れる
+  //   await addDoc(collection(db, "posts", id, "comments"), {
+  //     comment: commentToSend,
+  //     username: session.user.name,
+  //     userImage: session.user.image,
+  //     timestamp: serverTimestamp(),
+  //   });
+  // };
 
   return (
     <div className="bg-main">
       <Header />
 
-      <div className="mb:m-16 m-8 max-w-7xl mx-auto">
+      {/* <div className="mb:m-16 m-8 max-w-7xl mx-auto">
         <button
           className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
           type="button"
@@ -129,18 +130,18 @@ const Post = ({ post }) => {
           <p className="">戻る</p>
         </button>
         <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="grid grid-cols-1 md:grid-cols-2"> */}
             {/* img */}
             <div className="bg-gray-100 h-full p-8 rounded-l-3xl md:col-span-1">
               <DetailFlyerImage
-                key={id}
+                key={post.id}
                 img={post.image}
                 subimg={post.image2}
               />
             </div>
-            <div className=" md:col-span-1">
+            {/* <div className=" md:col-span-1"> */}
               {/* Button */}
-              {session && (
+              {/* {session && (
                 <div className=" flex  justify-between px-4 pt-4 h-300">
                   <div className="flex space-x-4 items-center">
                     {hasLiked ? (
@@ -170,28 +171,28 @@ const Post = ({ post }) => {
                           </div>
                         </div>
                       </>
-                    )}
+                    )} */}
                     {/* <PaperAirplaneIcon className="btn rotate-45" /> */}
-                  </div>
+                  {/* </div> */}
                   {/* <BookmarkIcon className="btn" /> */}
-                  <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
+                  {/* <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
                     {prefectures}
                     {post.place}
                   </p>
                 </div>
-              )}
+              )} */}
               {/* <div className="">
                   {likes.length > 0 && (
                     <p className="font-bold ml-1 ">{likes.length} post</p>
                   )}
                 </div> */}
               {/* caption */}
-              <p className="px-10 py-5 font-bold">
+              {/* <p className="px-10 py-5 font-bold">
                 <span>{caption}</span>
-              </p>
+              </p> */}
 
               {/* comments */}
-              {comments.length > 0 && (
+              {/* {comments.length > 0 && (
                 <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
                   {comments.map((comment) => (
                     <div
@@ -215,10 +216,10 @@ const Post = ({ post }) => {
                     </div>
                   ))}
                 </div>
-              )}
+              )} */}
 
               {/* inputbox */}
-              {session && (
+              {/* {session && (
                 <form action="" className="flex items-center p-4">
                   <EmojiHappyIcon className="h-7" />
                   <input
@@ -252,51 +253,85 @@ const Post = ({ post }) => {
           </div>
         </div>
       </div>
-      <Recomends />
+      <Recomends /> */}
     </div>
   );
 };
 
-export default Post
+export default DetailPost;
 
-export async function getStaticPaths() {
-  const postSnapshot = await getDocs(collection(db, 'posts'));
-  const posts = postSnapshot.docs.map(doc => {
-    const data = doc.data();
-    data.id = doc.id;
-    return data;
-  });
-  const paths = posts.map(post => ({
-    params: {
-      id: post.id.toString()
-    },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
+  // console.log(params);
   const id = params.id;
   const postSnapshot = await getDoc(doc(db, "posts", id));
   // const post = postSnapshot.data();
   const post = postSnapshot.data();
-  post.timestamp = post.timestamp.toString()
+  post.timestamp = post.timestamp.toString();
 
   // const post = JSON.parse(JSON.stringify(post1));
 
   post.id = postSnapshot.id;
-  //   console.log(jsonPost);
+    // console.log(post);
   return {
     props: {
-      post
+      post,
     },
   };
+  // const id = params;
+  // const result = await getDocs(collection(db, "posts"));
+  // const posts = result.docs.map((doc) => {
+  //   const data = doc.data();
+  //   data.id = doc.id;
+  //   return data;
+  // });
+  // const result = await getDocs(collection(db, "posts"));
+  // const result = await db.collection('posts').doc(id).get()
+  // console.log(posts);
+  // return {
+  //   props: {
+  //     posts: {
+  //       // ...result.data(),
+  //       // timestamp:result.data().timestamp.toMillis()
+  //     },
+  //   }
+  // }
 }
 
+// export async function getStaticPaths() {
+//   const postSnapshot = await getDocs(collection(db, "posts"));
+//   const posts = postSnapshot.docs.map((doc) => {
+//     const data = doc.data();
+//     data.id = doc.id;
+//     return data;
+//   });
+//   const paths = posts.map((post) => ({
+//     params: {
+//       id: post.id.toString(),
+//     },
+//   }));
+//   return {
+//     paths,
+//     fallback: false,
+//   };
+// }
 
+// export async function getStaticProps({ params }) {
+//   const id = params.id;
+//   const postSnapshot = await getDoc(doc(db, "posts", id));
+//   // const post = postSnapshot.data();
+//   const post = postSnapshot.data();
+//   post.timestamp = post.timestamp.toString();
+
+//   // const post = JSON.parse(JSON.stringify(post1));
+
+//   post.id = postSnapshot.id;
+//   //   console.log(jsonPost);
+//   return {
+//     props: {
+//       post,
+//     },
+//   };
+// }
 
 // export const getStaticPaths = async () => {
 //   const snapshot = await getDocs(collection(db, 'posts'));
