@@ -172,7 +172,6 @@ const DetailPost = ({ post }) => {
                     )}
                     {/* <PaperAirplaneIcon className="btn rotate-45" /> */}
                   </div>
-                  <BookmarkIcon className="btn" />
                   <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
                     {post.prefectures}
                     {post.place}
@@ -185,7 +184,10 @@ const DetailPost = ({ post }) => {
                   )}
                 </div>
               {/* caption */}
-              <p className="px-10 py-5 font-bold">
+              <p className="px-10 py-5">
+                <span>{post.shopName}</span>
+              </p>
+              <p className="px-10 py-5">
                 <span>{post.caption}</span>
               </p>
 
