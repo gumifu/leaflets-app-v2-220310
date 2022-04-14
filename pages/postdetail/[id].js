@@ -44,84 +44,82 @@ const DetailPost = ({ post }) => {
   //   shopTel,
   //   shopHomepage,
   // } = post;
-  // const router = useRouter();
-  // // const postprops = JSON.parse(postProps);
-  // // console.log(post.image);
+  const router = useRouter();
   const { data: session } = useSession();
-  // const [comment, setComment] = useState("");
-  // const [comments, setComments] = useState([]);
-  // const [likes, setLikes] = useState([]);
-  // const [hasLiked, setHasLiked] = useState(false);
+  const [comment, setComment] = useState("");
+  const [comments, setComments] = useState([]);
+  const [likes, setLikes] = useState([]);
+  const [hasLiked, setHasLiked] = useState(false);
 
-  // useEffect(
-  //   () =>
-  //     onSnapshot(collection(db, "posts", id, "likes"), (snapshot) =>
-  //       setLikes(snapshot.docs)
-  //     ),
-  //   [db, id]
-  // );
+  useEffect(
+    () =>
+      onSnapshot(collection(db, "posts", post.id, "likes"), (snapshot) =>
+        setLikes(snapshot.docs)
+      ),
+    [db, post.id]
+  );
 
-  // //hasliked
-  // useEffect(
-  //   () =>
-  //     setHasLiked(
-  //       likes.findIndex((like) => like.id === session?.user?.uid) !== -1
-  //     ),
-  //   [likes]
-  // );
+  //hasliked
+  useEffect(
+    () =>
+      setHasLiked(
+        likes.findIndex((like) => like.id === session?.user?.uid) !== -1
+      ),
+    [likes]
+  );
 
-  // //Confirmation of like? or not?
-  // const likePost = async () => {
-  //   if (hasLiked) {
-  //     //delete!!!!!
-  //     await deleteDoc(doc(db, "posts", id, "likes", session.user.uid));
-  //   } else {
-  //     await setDoc(doc(db, "posts", id, "likes", session.user.uid), {
-  //       //If you want to send more data
-  //       accountName: session.user.name,
-  //       timestamp: serverTimestamp(),
-  //     });
-  //   }
-  // };
+  //Confirmation of like? or not?
+  const likePost = async () => {
+    if (hasLiked) {
+      //delete!!!!!
+      await deleteDoc(doc(db, "posts", post.id, "likes", session.user.uid));
+    } else {
+      await setDoc(doc(db, "posts", post.id, "likes", session.user.uid), {
+        //If you want to send more data
+        accountName: session.user.name,
+        timestamp: serverTimestamp(),
+      });
+    }
+  };
 
-  // // console.log(hasLiked);
+  // console.log(hasLiked);
 
-  // // snapshot comment!
-  // useEffect(
-  //   () =>
-  //     onSnapshot(
-  //       query(
-  //         collection(db, "posts", id, "comments"),
-  //         orderBy("timestamp", "desc")
-  //       ),
-  //       (snapshot) => setComments(snapshot.docs)
-  //     ),
-  //   [db, id]
-  // );
-  // comments.map((comment) => {
-  //   console.log(comment.id);
-  // });
+  // snapshot comment!
+  useEffect(
+    () =>
+      onSnapshot(
+        query(
+          collection(db, "posts", post.id, "comments"),
+          orderBy("timestamp", "desc")
+        ),
+        (snapshot) => setComments(snapshot.docs)
+      ),
+    [db, post.id]
+  );
+  comments.map((comment) => {
+    console.log(comment.id);
+  });
 
-  // //send comment to firebase!
-  // const sendComment = async (e) => {
-  //   e.preventDefault();
+  //send comment to firebase!
+  const sendComment = async (e) => {
+    e.preventDefault();
 
-  //   const commentToSend = comment;
-  //   setComment("");
-  //   // コメントを入れる
-  //   await addDoc(collection(db, "posts", id, "comments"), {
-  //     comment: commentToSend,
-  //     username: session.user.name,
-  //     userImage: session.user.image,
-  //     timestamp: serverTimestamp(),
-  //   });
-  // };
+    const commentToSend = comment;
+    setComment("");
+    // コメントを入れる
+    await addDoc(collection(db, "posts", post.id, "comments"), {
+      comment: commentToSend,
+      username: session.user.name,
+      userImage: session.user.image,
+      timestamp: serverTimestamp(),
+    });
+  };
 
   return (
     <div className="bg-main">
       <Header />
 
-      {/* <div className="mb:m-16 m-8 max-w-7xl mx-auto">
+      <div className="mb:m-16 m-8 max-w-7xl mx-auto">
         <button
           className="  h-14 w-16 text-white hover:bg-gray-500 duration-200 ease-in-out rounded-xl mb-2"
           type="button"
@@ -130,7 +128,7 @@ const DetailPost = ({ post }) => {
           <p className="">戻る</p>
         </button>
         <div className="bg-white border border-black rounded-lg relative max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2"> */}
+          <div className="grid grid-cols-1 md:grid-cols-2">
             {/* img */}
             <div className="bg-gray-100 h-full p-8 rounded-l-3xl md:col-span-1">
               <DetailFlyerImage
@@ -139,9 +137,9 @@ const DetailPost = ({ post }) => {
                 subimg={post.image2}
               />
             </div>
-            {/* <div className=" md:col-span-1"> */}
+            <div className=" md:col-span-1">
               {/* Button */}
-              {/* {session && (
+              {session && (
                 <div className=" flex  justify-between px-4 pt-4 h-300">
                   <div className="flex space-x-4 items-center">
                     {hasLiked ? (
@@ -171,28 +169,28 @@ const DetailPost = ({ post }) => {
                           </div>
                         </div>
                       </>
-                    )} */}
-                    {/* <PaperAirplaneIcon className="btn rotate-45" /> */}
-                  {/* </div> */}
-                  {/* <BookmarkIcon className="btn" /> */}
-                  {/* <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
+                    )}
+                    <PaperAirplaneIcon className="btn rotate-45" />
+                  </div>
+                  <BookmarkIcon className="btn" />
+                  <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
                     {prefectures}
                     {post.place}
                   </p>
                 </div>
-              )} */}
-              {/* <div className="">
+              )}
+              <div className="">
                   {likes.length > 0 && (
                     <p className="font-bold ml-1 ">{likes.length} post</p>
                   )}
-                </div> */}
+                </div>
               {/* caption */}
-              {/* <p className="px-10 py-5 font-bold">
-                <span>{caption}</span>
-              </p> */}
+              <p className="px-10 py-5 font-bold">
+                <span>{post.caption}</span>
+              </p>
 
               {/* comments */}
-              {/* {comments.length > 0 && (
+              {comments.length > 0 && (
                 <div className="ml-10 h-20 overflow-y-scroll scrollbar-thumb-black scrollbar-thin">
                   {comments.map((comment) => (
                     <div
@@ -216,10 +214,10 @@ const DetailPost = ({ post }) => {
                     </div>
                   ))}
                 </div>
-              )} */}
+              )}
 
               {/* inputbox */}
-              {/* {session && (
+              {session && (
                 <form action="" className="flex items-center p-4">
                   <EmojiHappyIcon className="h-7" />
                   <input
@@ -240,7 +238,7 @@ const DetailPost = ({ post }) => {
                 </form>
               )}
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${shopName}+${prefectures}+${post.place}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${post.shopName}+${post.prefectures}+${post.place}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="h-10 cursor-pointer border-2 bg-blue-400 border-blue-300 border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
@@ -253,7 +251,7 @@ const DetailPost = ({ post }) => {
           </div>
         </div>
       </div>
-      <Recomends /> */}
+      <Recomends />
     </div>
   );
 };
