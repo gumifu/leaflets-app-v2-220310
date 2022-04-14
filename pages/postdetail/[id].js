@@ -174,7 +174,7 @@ const DetailPost = ({ post }) => {
                   </div>
                   <BookmarkIcon className="btn" />
                   <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
-                    {prefectures}
+                    {post.prefectures}
                     {post.place}
                   </p>
                 </div>
