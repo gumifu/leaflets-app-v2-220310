@@ -209,8 +209,8 @@ const Post = ({
                   rel="noopener noreferrer"
                   className="h-10 cursor-pointer border-2 border-gray-300 border-inherit hover:border-white/0 p-2 flex items-center justify-center rounded-lg hover:bg-blue-500 hover:rounded-tr-none duration-300"
                 >
-                  {" "}
-                  <img src="/maps-type.svg" className="md:h-5 h-3" />
+                  {/* {" "} */}
+                  <img src="/maps-type.svg" className="md:h-4 h-3" />
                   <FiExternalLink className="text-lg text-white ml-2" />
                 </a>
               </div>

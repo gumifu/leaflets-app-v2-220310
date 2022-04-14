@@ -26,18 +26,18 @@ export default function AdminIndex() {
   const emailRef = useRef(null);
   const telRef = useRef(null);
   const homepageRef = useRef(null);
-  const designedByRef = useRef(null);
-  const designedByLink = useRef(null);
+  // const designedByRef = useRef(null);
+  // const designedByLink = useRef(null);
   const latRef = useRef(null);
   const lngRef = useRef(null);
   const [loading, setLoading] = useState(false);
   // image
   const filePickerRef = useRef(null);
   const filePickerRef2 = useRef(null);
-  const filePickerRefDesignedBy = useRef(null);
+  // const filePickerRefDesignedBy = useRef(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [selectedFile2, setSelectedFile2] = useState(null);
-  const [selectedFileDesignedBy, setSelectedFileDesignedBy] = useState(null);
+  // const [selectedFileDesignedBy, setSelectedFileDesignedBy] = useState(null);
   // const [selectedFile3, setSelectedFile3] = useState(null);
   // const [selectedFile4, setSelectedFile4] = useState(null);
   // const [selectedFile5, setSelectedFile5] = useState(null);
@@ -91,17 +91,17 @@ export default function AdminIndex() {
       }
     );
 
-    // const imageRef2 = ref(storage, `posts/${docRef.id}/image2`);
+    const imageRef2 = ref(storage, `posts/${docRef.id}/image2`);
 
-    // await uploadString(imageRef2, selectedFile2, "data_url").then(
-    //   async (snaphot) => {
-    //     const downloadURL = await getDownloadURL(imageRef2);
+    await uploadString(imageRef2, selectedFile2, "data_url").then(
+      async (snaphot) => {
+        const downloadURL = await getDownloadURL(imageRef2);
 
-    //     await updateDoc(doc(db, "posts", docRef.id), {
-    //       image2: downloadURL,
-    //     });
-    //   }
-    // );
+        await updateDoc(doc(db, "posts", docRef.id), {
+          image2: downloadURL,
+        });
+      }
+    );
 
     // const imageRefDesignedBy = ref(storage, `posts/${docRef.id}/image99`);
 
@@ -118,7 +118,7 @@ export default function AdminIndex() {
     // });
     setLoading(false);
     setSelectedFile(null);
-    // setSelectedFile2(null);
+    setSelectedFile2(null);
     // setSelectedFileDesignedBy(null);
   };
 
@@ -133,16 +133,16 @@ export default function AdminIndex() {
     console.log(reader);
   };
 
-  // const addImageToPost2 = (e) => {
-  //   const reader2 = new FileReader();
-  //   if (e.target.files[0]) {
-  //     reader2.readAsDataURL(e.target.files[0]);
-  //   }
-  //   reader2.onload = (readerEvent) => {
-  //     setSelectedFile2(readerEvent.target.result);
-  //   };
-  //   console.log(reader2);
-  // };
+  const addImageToPost2 = (e) => {
+    const reader2 = new FileReader();
+    if (e.target.files[0]) {
+      reader2.readAsDataURL(e.target.files[0]);
+    }
+    reader2.onload = (readerEvent) => {
+      setSelectedFile2(readerEvent.target.result);
+    };
+    console.log(reader2);
+  };
 
   // const addImageToPostDesignedBy = (e) => {
   //   const reader3 = new FileReader();
@@ -195,7 +195,7 @@ export default function AdminIndex() {
                 />
               </div>
             )}
-            {/* {selectedFile2 ? (
+            {selectedFile2 ? (
                   <img
                     src={selectedFile2}
                     onClick={() => setSelectedFile2(null)}
@@ -212,7 +212,7 @@ export default function AdminIndex() {
                       aria-hidden="true"
                     />
                   </div>
-                )} */}
+                )}
             <div className="mt-10">
               <div className="mt-10 text-center sm:mt-5 ">
                 <div>
@@ -224,7 +224,7 @@ export default function AdminIndex() {
                     required
                   />
                 </div>
-                {/* <div>
+                <div>
                       <input
                         ref={filePickerRef2}
                         type="file"
@@ -232,7 +232,7 @@ export default function AdminIndex() {
                         onChange={addImageToPost2}
                         required
                       />
-                    </div> */}
+                    </div>
                 {/* 店名を追加 */}
                 <div className="mt-2 border-b-2">
                   <input

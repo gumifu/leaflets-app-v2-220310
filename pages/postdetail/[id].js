@@ -170,7 +170,7 @@ const DetailPost = ({ post }) => {
                         </div>
                       </>
                     )}
-                    <PaperAirplaneIcon className="btn rotate-45" />
+                    {/* <PaperAirplaneIcon className="btn rotate-45" /> */}
                   </div>
                   <BookmarkIcon className="btn" />
                   <p className="px-5 py-3 mr-5 md:px-0 text-red-400 ">
