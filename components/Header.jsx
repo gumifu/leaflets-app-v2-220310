@@ -15,12 +15,12 @@ const Header = () => {
   const [open, setOpen] = useRecoilState(modalState);
   // console.log(session.user.uid);
   return (
-    <div className="sticky md:top-10 top-0 md:mx-5 z-50 md:mb-20 mb-0">
-      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black md:rounded-full bg-opacity-20 backdrop-blur-md px-4 py-2">
+    <div className="sticky md:top-5 top-0 md:mx-5 z-50 md:mb-5 mb-0">
+      <div className="flex shadow-xl shadow-gray-800 items-center justify-between m-w-6xl bg-black md:rounded-full bg-opacity-20 backdrop-blur-md px-4 py-1">
         {/* left */}
         <div
           onClick={() => router.push("/")}
-          className=" my-2 relative md:w-20 md:h-20  hidden lg:inline-grid cursor-pointer "
+          className=" relative md:w-20 md:h-20  hidden lg:inline-grid cursor-pointer "
         >
           <Image
             src="/logo-main-white.svg"

@@ -178,11 +178,6 @@ const DetailPost = ({ post }) => {
                   </p>
                 </div>
               )}
-              <div className="">
-                  {likes.length > 0 && (
-                    <p className="font-bold ml-1 ">{likes.length} post</p>
-                  )}
-                </div>
               {/* caption */}
               <p className="px-10 py-5">
                 <span>{post.shopName}</span>
