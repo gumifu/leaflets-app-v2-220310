@@ -11,7 +11,7 @@ export default function Home() {
     <div className="bg-main">
       <Head>
         <title>leaflets</title>
-        <meta name="description" content="Leaflets app by create next app" />
+        <meta name="description" content="Leaflets app by create app!!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
