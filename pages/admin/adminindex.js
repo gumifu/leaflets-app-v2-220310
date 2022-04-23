@@ -196,23 +196,23 @@ export default function AdminIndex() {
               </div>
             )}
             {selectedFile2 ? (
-                  <img
-                    src={selectedFile2}
-                    onClick={() => setSelectedFile2(null)}
-                    alt=""
-                    className="w-full object-contain cursor-pointer"
-                  />
-                ) : (
-                  <div
-                    onClick={() => filePickerRef2.current.click()}
-                    className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
-                  >
-                    <CameraIcon
-                      className="h-6 w-6 text-blue-600"
-                      aria-hidden="true"
-                    />
-                  </div>
-                )}
+              <img
+                src={selectedFile2}
+                onClick={() => setSelectedFile2(null)}
+                alt=""
+                className="w-full object-contain cursor-pointer"
+              />
+            ) : (
+              <div
+                onClick={() => filePickerRef2.current.click()}
+                className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 cursor-pointer"
+              >
+                <CameraIcon
+                  className="h-6 w-6 text-blue-600"
+                  aria-hidden="true"
+                />
+              </div>
+            )}
             <div className="mt-10">
               <div className="mt-10 text-center sm:mt-5 ">
                 <div>
@@ -225,14 +225,14 @@ export default function AdminIndex() {
                   />
                 </div>
                 <div>
-                      <input
-                        ref={filePickerRef2}
-                        type="file"
-                        hidden
-                        onChange={addImageToPost2}
-                        required
-                      />
-                    </div>
+                  <input
+                    ref={filePickerRef2}
+                    type="file"
+                    hidden
+                    onChange={addImageToPost2}
+                    required
+                  />
+                </div>
                 {/* 店名を追加 */}
                 <div className="mt-2 border-b-2">
                   <input

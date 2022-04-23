@@ -28,6 +28,7 @@ import Recomends from "../../components/Recomends";
 import { FiExternalLink } from "react-icons/fi";
 import { async } from "@firebase/util";
 import { db } from "../../firebase";
+import GoogleMap from "../../components/GoogleMapComponent";
 
 const DetailPost = ({ post }) => {
   // console.log(post.image);
@@ -244,6 +245,7 @@ const DetailPost = ({ post }) => {
                 <FiExternalLink className="text-lg text-white ml-2" />
               </a>
               <Map coordinates={post.coordinates} />
+              {/* <GoogleMap/> */}
             </div>
           </div>
         </div>
@@ -266,7 +268,7 @@ export async function getServerSideProps({ params }) {
   // const post = JSON.parse(JSON.stringify(post1));
 
   post.id = postSnapshot.id;
-    // console.log(post);
+  // console.log(post);
   return {
     props: {
       post,

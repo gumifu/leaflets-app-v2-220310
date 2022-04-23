@@ -148,8 +148,8 @@ const Post = ({
             });
           }}
         > */}
-          {/* <Link href={`/postdetail/${id}`}> */}
-          <Nextlink passHref href={`/postdetail/${id}`}>
+        {/* <Link href={`/postdetail/${id}`}> */}
+        <Nextlink passHref href={`/postdetail/${id}`}>
           <div className="flex flex-col items-center justify-center p-2 cursor-pointer ">
             <div className="block text-center bg-white shadow-sm shadow-gray-800 w-full h-full">
               <img
@@ -164,8 +164,8 @@ const Post = ({
               {shopName}
             </p>
           </div>
-          </Nextlink>
-          {/* </Link> */}
+        </Nextlink>
+        {/* </Link> */}
         {/* </div> */}
         {/* Button */}
         {session && (

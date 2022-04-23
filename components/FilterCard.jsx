@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { SearchCircleIcon } from "@heroicons/react/outline";
+import DistanceCard from "./DistanceCard";
 
 const FilterdCard = ({ placeholder }) => {
   const [prefecRefInput, setPrefecRefInput] = useState("");
@@ -10,8 +11,8 @@ const FilterdCard = ({ placeholder }) => {
   const router = useRouter();
 
   const resetInput = () => {
-    // setsetPrefecRefInput("")
     setClassificationRefInput("");
+    setPrefecRefInput("全国");
   };
 
   const search = () => {
@@ -36,6 +37,7 @@ const FilterdCard = ({ placeholder }) => {
           />
         </div>
         <div className="bg-white bg-opacity-10 p-5 rounded-lg md:w-4/5 w-full md:mr-5 m-1">
+          <DistanceCard/>
           <p className=" text-white">■ エリア / カテゴリーを入力</p>
           <div className="flex items-center rounded-md lg:mb-3 mb-1 py-2 md:shadow-sm border-none">
             <select

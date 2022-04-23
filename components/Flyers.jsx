@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import React from "react";
+import DistanceCard from "./DistanceCard";
 import FilterdCard from "./FilterCard";
 import MiniProfile from "./MiniProfile";
 import Post from "./Post";

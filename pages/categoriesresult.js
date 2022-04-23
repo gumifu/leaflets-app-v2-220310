@@ -8,9 +8,9 @@ import { FilterResultCard } from "../components/FilterResultCard";
 
 const FilteRsresult = () => {
   const router = useRouter();
-  const { prefecture, classification } = router.query;
+  const { classification } = router.query;
 
-  console.log(prefecture);
+//   console.log(prefecture);
   console.log(classification);
 
   const [posts, setPosts] = useState([]);
@@ -25,33 +25,10 @@ const FilteRsresult = () => {
     const getPosts = async () => {
       const data = await getDocs(choosePost);
       let post = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-      if (prefecture && classification) {
-        // console.log('hello')
-        post = post.filter((output, index) => {
-          return output.prefectures.includes(prefecture) && output.classification.includes(classification);
-        });
-        // console.log(post);
-        if (post.length > 0){
-          setPosts(post)
-        } else {
-          console.log('hello');
-        }
-      }
-      else if (prefecture) {
-        post = post.filter((output, index) => {
-          return output.prefectures.includes(prefecture);
-        });
-        setPosts(post);
-      } else if (classification) {
         post = post.filter((output, index) => {
           return output.classification.includes(classification);
         });
         setPosts(post);
-      } else {
-        return <>
-          <p className=" text-white">結果はありません...</p>
-        </>;
-      }
     };
     getPosts();
   }, []);
