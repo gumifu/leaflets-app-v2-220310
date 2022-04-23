@@ -12,7 +12,7 @@ class MyDocument extends Document {
         <Head>
           <meta name="application-name" content="leaflets App" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link
             href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;500;900&family=Nunito&display=swap"
             rel="stylesheet"
